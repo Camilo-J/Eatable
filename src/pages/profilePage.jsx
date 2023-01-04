@@ -79,7 +79,7 @@ const HistoryButton = styled.button`
 `;
 
 const ProfilePage = () => {
-  const { user } = useAuth();
+  const { user, navigate } = useAuth();
   const { name, email, phone, address } = user;
 
   return (
@@ -89,7 +89,9 @@ const ProfilePage = () => {
         <div>
           <Subtitle>
             <p>Personal details</p>
-            <EditButton>change</EditButton>
+            <EditButton onClick={() => navigate("/profile/edit")}>
+              change
+            </EditButton>
           </Subtitle>
           <DataProfile>
             <p>{name || "User"}</p>

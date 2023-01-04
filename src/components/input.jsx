@@ -9,13 +9,13 @@ const Container = styled.div`
 
 const StyledInput = styled.input`
   border: none;
-  background-color: #f6f6f9;
+  background-color: ${({ color }) => (color ? "" : "#f6f6f9")};
   box-sizing: border-box;
   border-bottom: 1px solid #000;
 
   &:focus-visible {
     outline: none;
-    border-bottom-color: blue;
+    border-bottom-color: #fa4a0c;
   }
 `;
 
@@ -32,6 +32,7 @@ const Input = ({
   onChange,
   placeholder,
   label,
+  color,
 }) => {
   return (
     <Container>
@@ -43,6 +44,7 @@ const Input = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
+        color={color}
       />
     </Container>
   );

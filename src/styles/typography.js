@@ -28,7 +28,7 @@ export const typography = {
     text-align: center;
     `,
     xl: `
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     line-height: 1.75rem;
     `,
   },
@@ -68,7 +68,7 @@ for (const size in typography.text) {
 
 for (const size in typography.head) {
   typography.head[size] += `
-  font-family: ${fonts.secondary};
+  font-family: ${fonts.primary};
   font-weight: 600;
   `;
 }
