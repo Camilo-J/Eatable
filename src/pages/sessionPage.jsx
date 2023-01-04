@@ -5,6 +5,7 @@ import { typography } from "../styles/typography";
 import Input from "../components/input";
 import CustomButton from "../components/Button";
 import { useState } from "react";
+import { useAuth } from "../context/auth-context";
 
 const Container = styled.div`
   display: flex;
@@ -75,15 +76,15 @@ const ContainerButton = styled("div")`
 `;
 
 const SessionPage = () => {
-  const [options, setOptions] = useState({ login: true, sign_up: false });
-  // const [login, setLogin] = useState(true);
+  const [options, setOptions] = useState({ loginOp: true, sign_upOp: false });
+  const { login, signup } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
   const { email, password } = formData;
-  const { login, sign_up } = options;
+  const { loginOp, sign_upOp } = options;
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -92,13 +93,11 @@ const SessionPage = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (login) {
-      console.log("hola soy login");
-    }
-    if (sign_up) {
-      console.log("hola soy sign-up");
-    }
+    if (loginOp) login(formData);
+
+    if (sign_upOp) signup(formData);
   }
+
   function handleOptions() {
     // 1.- Away to switch the states
     let newValue = {};
@@ -107,6 +106,7 @@ const SessionPage = () => {
     }
     setOptions(newValue);
   }
+
   return (
     <Container>
       <HeaderContainer>
@@ -117,13 +117,13 @@ const SessionPage = () => {
           </HeaderText>
         </Header>
         <Footer>
-          <FooterOptions selected={login} onClick={handleOptions}>
+          <FooterOptions selected={loginOp} onClick={handleOptions}>
             Login
-            <BorderButton selected={login} />
+            <BorderButton selected={loginOp} />
           </FooterOptions>
-          <FooterOptions selected={sign_up} onClick={handleOptions}>
+          <FooterOptions selected={sign_upOp} onClick={handleOptions}>
             Sing-up
-            <BorderButton selected={sign_up} />
+            <BorderButton selected={sign_upOp} />
           </FooterOptions>
         </Footer>
       </HeaderContainer>
@@ -146,7 +146,7 @@ const SessionPage = () => {
         />
 
         <ContainerButton>
-          <CustomButton>Create Account</CustomButton>
+          <CustomButton>{loginOp ? "Login" : "Sign-up"}</CustomButton>
         </ContainerButton>
       </Form>
     </Container>
