@@ -1,17 +1,10 @@
-import CustomButton from "./components/Button";
-import Input from "./components/input";
+// import CustomButton from "./components/Button";
+// import Input from "./components/input";
+
+import SessionPage from "./pages/sessionPage";
 
 function App() {
-  return (
-    <Input
-      name={"Email"}
-      type={"text"}
-      value={"Camilo19@mail.com"}
-      onChange={"onChange"}
-      placeholder={"example@mail.com"}
-      label={"Email address"}
-    />
-  );
+  return <SessionPage />;
 }
 
 export default App;
