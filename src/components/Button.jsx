@@ -16,8 +16,8 @@ const Button = styled.button`
   }
 `;
 
-function CustomButton({ children }) {
-  return <Button>{children}</Button>;
+function CustomButton({ children, handleCLick }) {
+  return <Button onClick={handleCLick}>{children}</Button>;
 }
 
 export default CustomButton;
