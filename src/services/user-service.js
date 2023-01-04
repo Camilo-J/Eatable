@@ -2,7 +2,7 @@ import { tokenKey } from "../config";
 import collectionClient from "./collection-client";
 
 export async function createUser(userData) {
-  const { token, ...user } = await collectionClient("/signup", {
+  const { token, ...user } = await collectionClient("/users", {
     body: userData,
   });
 
