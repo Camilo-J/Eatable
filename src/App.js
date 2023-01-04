@@ -1,9 +1,7 @@
+import CustomButton from "./components/Button";
+
 function App() {
-  return (
-    <div className="App">
-      <p>Holaaa</p>
-    </div>
-  );
+  return <CustomButton text={"Hola"} />;
 }
 
 export default App;
