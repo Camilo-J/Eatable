@@ -53,7 +53,7 @@ const Form = styled.form`
 `;
 
 const ContainerButton = styled("div")`
-  margin-top: 400px;
+  margin-top: 267px;
 `;
 
 const EditProfilePage = () => {
