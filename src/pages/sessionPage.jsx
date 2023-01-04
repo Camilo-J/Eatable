@@ -77,7 +77,7 @@ const ContainerButton = styled("div")`
 
 const SessionPage = () => {
   const [options, setOptions] = useState({ loginOp: true, sign_upOp: false });
-  const { login, signup } = useAuth();
+  const { login, signup, navigate } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -96,6 +96,7 @@ const SessionPage = () => {
     if (loginOp) login(formData);
 
     if (sign_upOp) signup(formData);
+    navigate("/profile");
   }
 
   function handleOptions() {

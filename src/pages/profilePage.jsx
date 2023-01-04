@@ -79,7 +79,7 @@ const HistoryButton = styled.button`
 `;
 
 const ProfilePage = () => {
-  const { user, navigate } = useAuth();
+  const { user, navigate, logout } = useAuth();
   const { name, email, phone, address } = user;
 
   return (
@@ -107,7 +107,7 @@ const ProfilePage = () => {
           <AiOutlineRight />
         </HistoryButton>
       </Main>
-      <CustomButton>Logout</CustomButton>
+      <CustomButton handleCLick={logout}>Logout</CustomButton>
     </Container>
   );
 };
