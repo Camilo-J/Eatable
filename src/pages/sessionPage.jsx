@@ -2,8 +2,15 @@ import styled from "@emotion/styled";
 import { colors } from "../styles/colors";
 import title from "../assets/Eatable.svg";
 import { typography } from "../styles/typography";
+import Input from "../components/input";
+import CustomButton from "../components/Button";
+import { useState } from "react";
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3.125rem;
+`;
 
 const Header = styled.div`
   height: 340px;
@@ -38,13 +45,68 @@ const Footer = styled.div`
 
 const FooterOptions = styled.button`
   all: unset;
-  padding-bottom: 13px;
   width: 134px;
+  transition: all 0.3s;
+
   ${typography.text.lg}
-  ${({ selected }) => (selected ? "border-bottom: 3px solid #FA4A0C" : "")}
+`;
+const BorderButton = styled.div`
+  margin-top: 13px;
+  height: 2px;
+  background: linear-gradient(to right, #fa4a0c 50%, white 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+  ${({ selected }) => (selected ? "background-position: left bottom;" : "")}
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center
+  padding: 0px;
+  gap: 2rem;
+`;
+
+const ContainerButton = styled("div")`
+  margin-top: 210px;
+  margin-bottom: 40px;
 `;
 
 const SessionPage = () => {
+  const [options, setOptions] = useState({ login: true, sign_up: false });
+  // const [login, setLogin] = useState(true);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formData;
+  const { login, sign_up } = options;
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (login) {
+      console.log("hola soy login");
+    }
+    if (sign_up) {
+      console.log("hola soy sign-up");
+    }
+  }
+  function handleOptions() {
+    // 1.- Away to switch the states
+    let newValue = {};
+    for (const [key, value] of Object.entries(options)) {
+      newValue[key] = !value;
+    }
+    setOptions(newValue);
+  }
   return (
     <Container>
       <HeaderContainer>
@@ -55,10 +117,38 @@ const SessionPage = () => {
           </HeaderText>
         </Header>
         <Footer>
-          <FooterOptions selected={true}>Login</FooterOptions>
-          <FooterOptions>Sing-up</FooterOptions>
+          <FooterOptions selected={login} onClick={handleOptions}>
+            Login
+            <BorderButton selected={login} />
+          </FooterOptions>
+          <FooterOptions selected={sign_up} onClick={handleOptions}>
+            Sing-up
+            <BorderButton selected={sign_up} />
+          </FooterOptions>
         </Footer>
       </HeaderContainer>
+      <Form onSubmit={handleSubmit}>
+        <Input
+          name="email"
+          type="email"
+          value={email}
+          onChange={handleChange}
+          placeholder="example@mail.com"
+          label="Email"
+        />
+        <Input
+          name="password"
+          type="password"
+          value={password}
+          onChange={handleChange}
+          placeholder="*******"
+          label="Password"
+        />
+
+        <ContainerButton>
+          <CustomButton>Create Account</CustomButton>
+        </ContainerButton>
+      </Form>
     </Container>
   );
 };

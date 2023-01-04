@@ -16,12 +16,8 @@ const Button = styled.button`
   }
 `;
 
-function CustomButton({ text }) {
-  return (
-    <div>
-      <Button>{text}</Button>
-    </div>
-  );
+function CustomButton({ children }) {
+  return <Button>{children}</Button>;
 }
 
 export default CustomButton;
