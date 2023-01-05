@@ -4,11 +4,12 @@ import { AiOutlinePlus, AiOutlineLine } from "react-icons/ai";
 import Image from "./image";
 import { colors, typography } from "../styles";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const Card = styled.div`
   height: 102px;
   width: 325px;
-  padding: 1.25rem;
+  padding: 1rem;
   background-color: #fff;
   border-radius: 20px;
   display: flex;
@@ -17,6 +18,7 @@ const Card = styled.div`
 `;
 
 const TextCard = styled.div`
+  width: 70%;
   ${typography.text.md}
   font-weight: 600;
   display: flex;
@@ -45,14 +47,24 @@ const Button = styled.div`
   gap: 2px;
 `;
 
-const CartCard = ({ src, price, name, id }) => {
+const CartCard = ({ src, price, name, id, changeAmount }) => {
   const [amount, setAmount] = useState(1);
 
   function handleIncrease() {
+    localStorage.setItem(
+      "CardOrders",
+      JSON.stringify(changeAmount(id, amount + 1))
+    );
+
     setAmount(amount + 1);
   }
 
   function handleDecrease() {
+    localStorage.setItem(
+      "CardOrders",
+      JSON.stringify(changeAmount(id, amount - 1))
+    );
+
     setAmount(amount - 1);
   }
 
@@ -61,8 +73,8 @@ const CartCard = ({ src, price, name, id }) => {
       <Image size={"xs"} src={src} />
       <TextCard>
         <Text>
-          <p>organic pumpkin</p>
-          <p style={{ color: "#FA4A0C", fontSize: "18px" }}>$75.55</p>
+          <p>{name}</p>
+          <p style={{ color: "#FA4A0C", fontSize: "18px" }}>${price}</p>
         </Text>
         <Button>
           <AiOutlineLine onClick={handleDecrease} />
