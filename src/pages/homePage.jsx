@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
 import { FiShoppingCart, FiSearch } from "react-icons/fi";
+import { HiOutlineChevronLeft } from "react-icons/hi";
 
 import CardFood from "../components/card";
+import { typography } from "../styles";
 
 const ContainerCards = styled.div`
   display: grid;
@@ -36,24 +38,34 @@ const Input = styled.input`
   font-size: 1.1rem;
 `;
 
+const Results = styled.p`
+  margin-top: 32px;
+  text-align: center;
+  ${typography.head.md}
+`;
+
 const HomePage = ({ products, search, handleChange }) => {
-  console.log(products);
   return (
     <Container>
-      <Header>
-        <Search>
-          <FiSearch />
-          <Input
-            id={"search"}
-            name={"search"}
-            type={"text"}
-            value={search}
-            onChange={handleChange}
-            placeholder={"Search"}
-          ></Input>
-        </Search>
-        <FiShoppingCart />
-      </Header>
+      <div>
+        <Header>
+          <Search>
+            {search ? <HiOutlineChevronLeft /> : <FiSearch />}
+            <Input
+              id={"search"}
+              name={"search"}
+              type={"text"}
+              value={search}
+              onChange={handleChange}
+              placeholder={"Search"}
+            ></Input>
+          </Search>
+          <FiShoppingCart />
+        </Header>
+
+        {search ? <Results>{`Found ${products.length} results`}</Results> : ""}
+      </div>
+
       <ContainerCards>
         {products?.map((elem) => (
           <CardFood
