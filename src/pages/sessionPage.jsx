@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useAuth } from "../context/auth-context";
 
 const Container = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 3.125rem;
