@@ -66,7 +66,7 @@ const HomePage = ({ products, search, handleChange }) => {
               placeholder={"Search"}
             ></Input>
           </Search>
-          <FiShoppingCart />
+          <FiShoppingCart onClick={() => navigate("cart")} />
         </Header>
 
         {search ? <Results>{`Found ${products.length} results`}</Results> : ""}
