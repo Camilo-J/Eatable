@@ -4,6 +4,7 @@ import Image from "./image";
 
 const Container = styled.div`
   width: 156px;
+  height: 230px;
   border-radius: 30px;
   background-color: ${colors.white};
   display: flex;
