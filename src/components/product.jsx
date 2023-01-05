@@ -46,12 +46,14 @@ const Description = styled.p`
   ${typography.text.md}
 `;
 
-const Product = ({ handleFilter }) => {
+const Product = ({ handleFilter, Order, handleOrder }) => {
   const { id } = useParams();
   let product = handleFilter(Number.parseInt(id));
 
+  let orderCart = Order(Number.parseInt(id));
+
   function addProduct() {
-    console.log("funcionando");
+    handleOrder({ id: product.id, quantity: 1 });
   }
 
   return (
@@ -72,7 +74,9 @@ const Product = ({ handleFilter }) => {
             <Description>{product?.description}</Description>
           </Body>
         </TextSection>
-        <CustomButton handleCLick={addProduct}>Add to Card</CustomButton>
+        <CustomButton handleCLick={addProduct} disable={Boolean(orderCart)}>
+          {!orderCart ? "Add to Cart" : "Added to Cart"}
+        </CustomButton>
       </Main>
     </Container>
   );
