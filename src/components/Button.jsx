@@ -7,17 +7,25 @@ const Button = styled.button`
   height: 50px;
   padding: 12px 16px;
   border-radius: 30px;
-  background-color: #fa4a0c;
   color: #fff;
   ${typography.text.lg}
 
-  &:hover {
+  ${({ disabled }) =>
+    disabled
+      ? "background-color: #fa7849;"
+      : `background-color: #fa4a0c;
+      cursor:pointer;
+      &:hover {
     background-color: #ef490e;
-  }
+  }`}
 `;
 
-function CustomButton({ children, handleCLick }) {
-  return <Button onClick={handleCLick}>{children}</Button>;
+function CustomButton({ children, handleCLick, disable }) {
+  return (
+    <Button onClick={handleCLick} disabled={Boolean(disable)}>
+      {children}
+    </Button>
+  );
 }
 
 export default CustomButton;
