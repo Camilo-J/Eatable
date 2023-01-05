@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 const sizeOptions = {
+  xs: "62px",
   sm: "130px",
   md: "241px",
 };
