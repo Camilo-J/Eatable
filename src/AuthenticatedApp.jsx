@@ -2,10 +2,11 @@ import styled from "@emotion/styled";
 import { useEffect } from "react";
 import { useState } from "react";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./components/navbar";
 import EditProfilePage from "./pages/editProdilePage";
 import HomePage from "./pages/homePage";
+import Product from "./components/product";
 import ProfilePage from "./pages/profilePage";
 import { getOrders } from "./services/products-service";
 
@@ -33,25 +34,36 @@ function AuthenticatedApp() {
     setSearch(event.target.value);
   }
 
+  function searchProduct(id) {
+    return products.find((elem) => elem.id === id);
+  }
+
   return (
     <Div>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <HomePage
-              products={searchProducts}
-              search={search}
-              handleChange={handleChange}
-            />
-          }
-        />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/profile/edit" element={<EditProfilePage />} />
-        {/* 
+        <Route path="/">
+          <Route index element={<Navigate to="/products" />} />
+          <Route
+            path="products"
+            element={
+              <HomePage
+                products={searchProducts}
+                search={search}
+                handleChange={handleChange}
+              />
+            }
+          />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/edit" element={<EditProfilePage />} />
+          <Route
+            path="/products/:id"
+            element={<Product handleFilter={searchProduct} />}
+          />
+          {/* 
         <Route path="/profile" element={<ProfilePage />} >
            <Route path="/edit" element={<EditProfilePage />} />
         </Route> */}
+        </Route>
       </Routes>
       <Navbar></Navbar>
     </Div>

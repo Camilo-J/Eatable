@@ -2,11 +2,12 @@ import styled from "@emotion/styled";
 
 const sizeOptions = {
   sm: "130px",
+  md: "241px",
 };
 
 const Photo = styled.div`
   width: ${({ size }) => sizeOptions[size]};
-  height: ${sizeOptions.sm};
+  height: ${({ size }) => sizeOptions[size]};
   box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.2);
   border-radius: 100%;
 `;

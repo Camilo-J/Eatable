@@ -27,9 +27,9 @@ const ImageContainer = styled.div`
   top: -2.4rem;
 `;
 
-const CardFood = ({ name, price, src }) => {
+const CardFood = ({ id, name, price, src, handleProduct }) => {
   return (
-    <Container>
+    <Container onClick={() => handleProduct(id)}>
       <ImageContainer>
         <Image size={"sm"} src={src} />
       </ImageContainer>

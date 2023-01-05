@@ -3,6 +3,7 @@ import { FiShoppingCart, FiSearch } from "react-icons/fi";
 import { HiOutlineChevronLeft } from "react-icons/hi";
 
 import CardFood from "../components/card";
+import { useAuth } from "../context/auth-context";
 import { typography } from "../styles";
 
 const ContainerCards = styled.div`
@@ -45,6 +46,11 @@ const Results = styled.p`
 `;
 
 const HomePage = ({ products, search, handleChange }) => {
+  const { navigate } = useAuth();
+
+  function showProduct(id) {
+    navigate(`/products/${id}`);
+  }
   return (
     <Container>
       <div>
@@ -74,6 +80,7 @@ const HomePage = ({ products, search, handleChange }) => {
             name={elem.name}
             price={elem.price}
             src={elem.picture_url}
+            handleProduct={showProduct}
           />
         ))}
       </ContainerCards>
