@@ -75,7 +75,8 @@ const EditProfilePage = () => {
   function handleSubmit(event) {
     event.preventDefault();
     update(formData);
-    navigate("./profile");
+    if (JSON.parse(localStorage.getItem("CardOrders"))) navigate("./checkout");
+    if (!JSON.parse(localStorage.getItem("CardOrders"))) navigate("./profile");
   }
 
   return (
