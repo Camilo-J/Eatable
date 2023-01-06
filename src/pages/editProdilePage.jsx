@@ -75,8 +75,12 @@ const EditProfilePage = () => {
   function handleSubmit(event) {
     event.preventDefault();
     update(formData);
-    if (JSON.parse(localStorage.getItem("CardOrders"))) navigate("./checkout");
-    if (!JSON.parse(localStorage.getItem("CardOrders"))) navigate("./profile");
+    console.log(JSON.parse(localStorage.getItem("CardOrders")).length);
+    if (JSON.parse(localStorage.getItem("CardOrders")).length === 0)
+      navigate("./profile");
+
+    if (JSON.parse(localStorage.getItem("CardOrders")).length)
+      navigate("./checkout");
   }
 
   return (
