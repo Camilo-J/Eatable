@@ -102,7 +102,7 @@ const ProfilePage = () => {
             <Text>{address || "----------"}</Text>
           </DataProfile>
         </div>
-        <HistoryButton>
+        <HistoryButton onClick={() => navigate("history")}>
           <p>History</p>
           <AiOutlineRight />
         </HistoryButton>

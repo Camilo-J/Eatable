@@ -24,7 +24,7 @@ function Navbar() {
     <NavbarC>
       <NavBarItem to={"/"} icon={optionIcon.home} stroke={1} />
       <NavBarItem to={"profile"} icon={optionIcon.user} stroke={1.5} />
-      <NavBarItem to={"profile/edit"} icon={optionIcon.history} />
+      <NavBarItem to={"history"} icon={optionIcon.history} />
     </NavbarC>
   );
 }
