@@ -11,6 +11,7 @@ import ProfilePage from "./pages/profilePage";
 import { getOrders } from "./services/products-service";
 import CartPage from "./pages/cartPage";
 import { useLocalStorage } from "./hook";
+import CheckoutPage from "./pages/checkoutPage";
 
 const Div = styled("div")`
   height: 100vh;
@@ -119,6 +120,10 @@ function AuthenticatedApp() {
                 totalAmount={getTotalAmount}
               />
             }
+          />
+          <Route
+            path="checkout"
+            element={<CheckoutPage totalAmount={getTotalAmount} />}
           />
           {/* 
         <Route path="/profile" element={<ProfilePage />} >

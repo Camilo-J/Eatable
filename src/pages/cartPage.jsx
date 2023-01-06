@@ -3,6 +3,7 @@ import { HiOutlineChevronLeft } from "react-icons/hi";
 import CustomButton from "../components/Button";
 
 import CartCard from "../components/cartCard";
+import { useAuth } from "../context/auth-context";
 import { typography } from "../styles";
 
 const Container = styled.div`
@@ -51,6 +52,11 @@ const Amount = styled.span`
 `;
 
 const CartPage = ({ changeAmount, orders, handleOrder, totalAmount }) => {
+  const { navigate } = useAuth();
+
+  function handleNavigate() {
+    navigate("checkout");
+  }
   return (
     <Container>
       <Header>
@@ -76,7 +82,7 @@ const CartPage = ({ changeAmount, orders, handleOrder, totalAmount }) => {
             <span>Total</span>
             <Amount>${totalAmount()}</Amount>
           </FooterText>
-          <CustomButton>Checkout</CustomButton>
+          <CustomButton handleCLick={handleNavigate}>Checkout</CustomButton>
         </Footer>
       </Main>
     </Container>
