@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { FiShoppingCart } from "react-icons/fi";
 import { HiOutlineChevronLeft } from "react-icons/hi";
 import CustomButton from "../components/Button";
 
@@ -51,6 +52,21 @@ const Amount = styled.span`
   color:#FA4A0C;
 `;
 
+const NotFound = styled.div`
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.7rem;
+  ${typography.head.sm}
+`;
+
+const SizeIcon = styled.section`
+  font-size: 7rem;
+  color: #c7c7c7;
+`;
+
 const CartPage = ({ changeAmount, orders, handleOrder, totalAmount }) => {
   const { navigate } = useAuth();
 
@@ -63,33 +79,44 @@ const CartPage = ({ changeAmount, orders, handleOrder, totalAmount }) => {
         <HiOutlineChevronLeft />
         <p>Cart</p>
       </Header>
-      <Main>
-        <ContainerCard>
-          {orders.map((elem) => (
-            <CartCard
-              key={elem.id}
-              changeAmount={changeAmount}
-              price={elem.price}
-              id={elem.id}
-              name={elem.name}
-              src={elem.picture_url}
-              getOrder={handleOrder}
-            />
-          ))}
-        </ContainerCard>
-        <Footer>
-          <FooterText>
-            <span>Total</span>
-            <Amount>${totalAmount()}</Amount>
-          </FooterText>
-          <CustomButton
-            handleCLick={handleNavigate}
-            disable={orders.lenght ? false : true}
-          >
-            Checkout
-          </CustomButton>
-        </Footer>
-      </Main>
+      {orders.lenght ? (
+        <>
+          <Main>
+            <ContainerCard>
+              {orders.map((elem) => (
+                <CartCard
+                  key={elem.id}
+                  changeAmount={changeAmount}
+                  price={elem.price}
+                  id={elem.id}
+                  name={elem.name}
+                  src={elem.picture_url}
+                  getOrder={handleOrder}
+                />
+              ))}
+            </ContainerCard>
+            <Footer>
+              <FooterText>
+                <span>Total</span>
+                <Amount>${totalAmount()}</Amount>
+              </FooterText>
+              <CustomButton
+                handleCLick={handleNavigate}
+                disable={orders.lenght ? false : true}
+              >
+                Checkout
+              </CustomButton>
+            </Footer>
+          </Main>
+        </>
+      ) : (
+        <NotFound>
+          <SizeIcon>
+            <FiShoppingCart />
+          </SizeIcon>
+          <p>No items in the cart</p>
+        </NotFound>
+      )}
     </Container>
   );
 };
