@@ -89,9 +89,13 @@ const Text = styled.p`
   color: #9f9090;
 `;
 
-const CheckoutPage = ({ totalAmount }) => {
+const CheckoutPage = ({ totalAmount, submitOrders }) => {
   const { user, navigate } = useAuth();
   const { name, email, phone, address } = user;
+
+  function handleSubmit() {
+    submitOrders(user.address, navigate);
+  }
   return (
     <Container>
       <Header>
@@ -121,7 +125,7 @@ const CheckoutPage = ({ totalAmount }) => {
             <span>Total</span>
             <Amount>${totalAmount()}</Amount>
           </FooterText>
-          <CustomButton>Complete Order</CustomButton>
+          <CustomButton handleCLick={handleSubmit}>Complete Order</CustomButton>
         </Footer>
       </Main>
     </Container>

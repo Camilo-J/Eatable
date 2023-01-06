@@ -12,6 +12,8 @@ import { getOrders } from "./services/products-service";
 import CartPage from "./pages/cartPage";
 import { useLocalStorage } from "./hook";
 import CheckoutPage from "./pages/checkoutPage";
+import { createOrder } from "./services/order-services";
+import HistoryPage from "./pages/historyPage";
 
 const Div = styled("div")`
   height: 100vh;
@@ -83,6 +85,13 @@ function AuthenticatedApp() {
     }, 0);
   }
 
+  async function createOrders(address, navigate) {
+    let request = { delivery_address: address, items: localSto };
+    createOrder(request).catch(console.log);
+    navigate("history");
+    localStorage.removeItem("CardOrders");
+  }
+
   return (
     <Div>
       <Routes>
@@ -123,8 +132,14 @@ function AuthenticatedApp() {
           />
           <Route
             path="checkout"
-            element={<CheckoutPage totalAmount={getTotalAmount} />}
+            element={
+              <CheckoutPage
+                submitOrders={createOrders}
+                totalAmount={getTotalAmount}
+              />
+            }
           />
+          <Route path="history" element={<HistoryPage />} />
           {/* 
         <Route path="/profile" element={<ProfilePage />} >
            <Route path="/edit" element={<EditProfilePage />} />
