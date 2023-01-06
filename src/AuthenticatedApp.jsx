@@ -102,7 +102,11 @@ function AuthenticatedApp() {
           <Route
             path="cart"
             element={
-              <CartPage changeAmount={handleAmount} orders={productInCart()} />
+              <CartPage
+                changeAmount={handleAmount}
+                orders={productInCart()}
+                handleOrder={findOrder}
+              />
             }
           />
           {/* 

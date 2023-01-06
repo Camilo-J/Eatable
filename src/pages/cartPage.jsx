@@ -5,8 +5,7 @@ const Container = styled.div`
   padding: 55px 50px;
 `;
 
-const CartPage = ({ changeAmount, orders }) => {
-  console.log(orders);
+const CartPage = ({ changeAmount, orders, handleOrder }) => {
   return (
     <Container>
       {orders.map((elem) => (
@@ -17,6 +16,7 @@ const CartPage = ({ changeAmount, orders }) => {
           id={elem.id}
           name={elem.name}
           src={elem.picture_url}
+          getOrder={handleOrder}
         />
       ))}
     </Container>

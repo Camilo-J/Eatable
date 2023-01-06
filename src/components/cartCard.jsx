@@ -4,7 +4,6 @@ import { AiOutlinePlus, AiOutlineLine } from "react-icons/ai";
 import Image from "./image";
 import { colors, typography } from "../styles";
 import { useState } from "react";
-import { useEffect } from "react";
 
 const Card = styled.div`
   height: 102px;
@@ -47,8 +46,8 @@ const Button = styled.div`
   gap: 2px;
 `;
 
-const CartCard = ({ src, price, name, id, changeAmount }) => {
-  const [amount, setAmount] = useState(1);
+const CartCard = ({ src, price, name, id, changeAmount, getOrder }) => {
+  const [amount, setAmount] = useState(getOrder(id).quantity);
 
   function handleIncrease() {
     localStorage.setItem(
