@@ -82,7 +82,12 @@ const CartPage = ({ changeAmount, orders, handleOrder, totalAmount }) => {
             <span>Total</span>
             <Amount>${totalAmount()}</Amount>
           </FooterText>
-          <CustomButton handleCLick={handleNavigate}>Checkout</CustomButton>
+          <CustomButton
+            handleCLick={handleNavigate}
+            disable={orders.lenght ? false : true}
+          >
+            Checkout
+          </CustomButton>
         </Footer>
       </Main>
     </Container>
