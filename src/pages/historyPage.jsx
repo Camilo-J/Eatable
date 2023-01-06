@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { useEffect } from "react";
 import { useState } from "react";
 import { HiOutlineChevronLeft } from "react-icons/hi";
+import { RiCalendarTodoFill } from "react-icons/ri";
 
 import HistoryCard from "../components/historyCard";
 import { getOrders } from "../services/order-services";
@@ -30,6 +31,21 @@ const ContainerCards = styled.div`
   gap: 12px;
 `;
 
+const NotFound = styled.div`
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.7rem;
+  ${typography.head.sm}
+`;
+
+const SizeIcon = styled.section`
+  font-size: 7rem;
+  color: #c7c7c7;
+`;
+
 const HistoryPage = () => {
   const [orders, setOrders] = useState([]);
 
@@ -43,18 +59,28 @@ const HistoryPage = () => {
         <HiOutlineChevronLeft />
         <p>Cart</p>
       </Header>
-      <ContainerCards>
-        {orders?.map((elem) => {
-          return (
-            <HistoryCard
-              key={elem.id}
-              addres={elem.delivery_address}
-              date={elem.created_at}
-              items={elem.order_details}
-            ></HistoryCard>
-          );
-        })}
-      </ContainerCards>
+
+      {orders.length ? (
+        <ContainerCards>
+          {orders?.map((elem) => {
+            return (
+              <HistoryCard
+                key={elem.id}
+                addres={elem.delivery_address}
+                date={elem.created_at}
+                items={elem.order_details}
+              ></HistoryCard>
+            );
+          })}
+        </ContainerCards>
+      ) : (
+        <NotFound>
+          <SizeIcon>
+            <RiCalendarTodoFill />
+          </SizeIcon>
+          <p>No history yet</p>
+        </NotFound>
+      )}
     </Container>
   );
 };
