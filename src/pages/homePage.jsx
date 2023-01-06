@@ -45,6 +45,20 @@ const Results = styled.p`
   ${typography.head.md}
 `;
 
+const NotFound = styled.div`
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.7rem;
+  ${typography.head.md}
+`;
+
+const SizeIcon = styled.section`
+  font-size: 7rem;
+  color: #c7c7c7;
+`;
 const HomePage = ({ products, search, handleChange }) => {
   const { navigate } = useAuth();
 
@@ -69,21 +83,34 @@ const HomePage = ({ products, search, handleChange }) => {
           <FiShoppingCart onClick={() => navigate("cart")} />
         </Header>
 
-        {search ? <Results>{`Found ${products.length} results`}</Results> : ""}
+        {search && products.length ? (
+          <Results>{`Found ${products.length} results`}</Results>
+        ) : (
+          ""
+        )}
       </div>
 
-      <ContainerCards>
-        {products?.map((elem) => (
-          <CardFood
-            key={elem.id}
-            id={elem.id}
-            name={elem.name}
-            price={elem.price}
-            src={elem.picture_url}
-            handleProduct={showProduct}
-          />
-        ))}
-      </ContainerCards>
+      {products.length ? (
+        <ContainerCards>
+          {products?.map((elem) => (
+            <CardFood
+              key={elem.id}
+              id={elem.id}
+              name={elem.name}
+              price={elem.price}
+              src={elem.picture_url}
+              handleProduct={showProduct}
+            />
+          ))}
+        </ContainerCards>
+      ) : (
+        <NotFound>
+          <SizeIcon>
+            <FiSearch />
+          </SizeIcon>
+          <p>No products found</p>
+        </NotFound>
+      )}
     </Container>
   );
 };
