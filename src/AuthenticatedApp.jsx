@@ -67,9 +67,19 @@ function AuthenticatedApp() {
       order.quantity = amount;
 
       neworders.push(order);
+      setLocalSto(neworders);
 
       return neworders;
     }
+  }
+
+  function getTotalAmount() {
+    let products = productInCart();
+
+    return products.reduce((accu, current) => {
+      let value = current.price * findOrder(current.id).quantity;
+      return accu + value;
+    }, 0);
   }
 
   return (
@@ -106,6 +116,7 @@ function AuthenticatedApp() {
                 changeAmount={handleAmount}
                 orders={productInCart()}
                 handleOrder={findOrder}
+                totalAmount={getTotalAmount}
               />
             }
           />

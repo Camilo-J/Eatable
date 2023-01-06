@@ -50,20 +50,20 @@ const CartCard = ({ src, price, name, id, changeAmount, getOrder }) => {
   const [amount, setAmount] = useState(getOrder(id).quantity);
 
   function handleIncrease() {
-    localStorage.setItem(
-      "CardOrders",
-      JSON.stringify(changeAmount(id, amount + 1))
-    );
-
+    // localStorage.setItem(
+    //   "CardOrders",
+    //   JSON.stringify(changeAmount(id, amount + 1))
+    // );
+    changeAmount(id, amount + 1);
     setAmount(amount + 1);
   }
 
   function handleDecrease() {
-    localStorage.setItem(
-      "CardOrders",
-      JSON.stringify(changeAmount(id, amount - 1))
-    );
-
+    // localStorage.setItem(
+    //   "CardOrders",
+    //   JSON.stringify(changeAmount(id, amount - 1))
+    // );
+    changeAmount(id, amount - 1);
     setAmount(amount - 1);
   }
 
@@ -73,7 +73,9 @@ const CartCard = ({ src, price, name, id, changeAmount, getOrder }) => {
       <TextCard>
         <Text>
           <p>{name}</p>
-          <p style={{ color: "#FA4A0C", fontSize: "18px" }}>${price}</p>
+          <p style={{ color: "#FA4A0C", fontSize: "18px" }}>
+            ${price * amount}
+          </p>
         </Text>
         <Button>
           <AiOutlineLine onClick={handleDecrease} />
