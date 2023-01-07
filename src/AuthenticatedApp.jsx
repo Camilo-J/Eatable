@@ -27,6 +27,7 @@ function AuthenticatedApp() {
   const [products, setProducts] = useState([]);
   const [search, setSearch] = useState("");
   const [localSto, setLocalSto] = useLocalStorage([], "CardOrders");
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     getOrders().then(setProducts).catch(console.log);
@@ -35,6 +36,22 @@ function AuthenticatedApp() {
   let searchProducts = products?.filter((elem) =>
     elem.name.toLowerCase().includes(search)
   );
+
+  if (filter !== "") {
+    searchProducts = searchProducts?.filter(
+      (elem) => elem.category.toLowerCase() === filter
+    );
+  }
+
+  let filterOptions = products.reduce((accu, current) => {
+    if (!accu.includes(current.category)) accu.push(current.category);
+
+    return accu;
+  }, []);
+
+  function handleFilter(event) {
+    setFilter(event.target.innerHTML.toLowerCase());
+  }
 
   function handleChange(event) {
     setSearch(event.target.value);
@@ -101,9 +118,12 @@ function AuthenticatedApp() {
             path="products"
             element={
               <HomePage
+                filters={filterOptions}
                 products={searchProducts}
                 search={search}
                 handleChange={handleChange}
+                handleFilter={handleFilter}
+                filterSelected={filter}
               />
             }
           />

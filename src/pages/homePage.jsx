@@ -45,6 +45,15 @@ const Results = styled.p`
   ${typography.head.md}
 `;
 
+const Filters = styled.section`
+  margin-top: 32px;
+  padding-left: 1rem;
+  font-size: 16px;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+`;
+
 const NotFound = styled.div`
   margin-top: 8rem;
   display: flex;
@@ -59,7 +68,38 @@ const SizeIcon = styled.section`
   font-size: 7rem;
   color: #c7c7c7;
 `;
-const HomePage = ({ products, search, handleChange }) => {
+
+const FilterOption = styled.div`
+  height: 55px;
+  ${typography.text.md}
+  transition: all 0.5s;
+  ${({ selected, name }) =>
+    selected === name.toLowerCase() ? "color:#fa4a0c;" : ""}
+`;
+
+const TextFilter = styled.p`
+  padding: 0 1rem;
+`;
+
+const BorderButton = styled.div`
+  margin-top: 10px;
+  height: 2px;
+  background: linear-gradient(to right, #fa4a0c 50%, #f6f6f9 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.5s ease-out;
+  ${({ selected, name }) =>
+    selected === name.toLowerCase() ? "background-position: left bottom;" : ""}
+`;
+
+const HomePage = ({
+  filterSelected,
+  products,
+  search,
+  filters,
+  handleChange,
+  handleFilter,
+}) => {
   const { navigate } = useAuth();
 
   function showProduct(id) {
@@ -82,9 +122,20 @@ const HomePage = ({ products, search, handleChange }) => {
           </Search>
           <FiShoppingCart onClick={() => navigate("cart")} />
         </Header>
-
         {search && products.length ? (
           <Results>{`Found ${products.length} results`}</Results>
+        ) : (
+          ""
+        )}
+        {!search ? (
+          <Filters>
+            {filters?.map((elem, index) => (
+              <FilterOption key={index} name={elem} selected={filterSelected}>
+                <TextFilter onClick={handleFilter}>{elem}</TextFilter>
+                <BorderButton name={elem} selected={filterSelected} />
+              </FilterOption>
+            ))}
+          </Filters>
         ) : (
           ""
         )}
