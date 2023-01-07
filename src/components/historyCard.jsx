@@ -91,7 +91,7 @@ const HistoryCard = ({ date, items, addres }) => {
           </Amount>
         </MainText>
       </MainView>
-      <DisplayView active={display}>
+      <DisplayView data-testid="containerView" active={display}>
         <GroupDetails>
           <Title>Order</Title>
           {items?.map((elem) => {
@@ -111,7 +111,7 @@ const HistoryCard = ({ date, items, addres }) => {
         </div>
       </DisplayView>
       <Icon active={display}>
-        <HiOutlineChevronDown onClick={handleDisplay} />
+        <HiOutlineChevronDown data-testid="display" onClick={handleDisplay} />
       </Icon>
     </Card>
   );
