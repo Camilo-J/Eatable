@@ -73,14 +73,17 @@ const CartCard = ({ src, price, name, id, changeAmount, getOrder }) => {
       <TextCard>
         <Text>
           <p>{name}</p>
-          <p style={{ color: "#FA4A0C", fontSize: "18px" }}>
+          <p
+            data-testid={"price"}
+            style={{ color: "#FA4A0C", fontSize: "18px" }}
+          >
             ${price * amount}
           </p>
         </Text>
         <Button>
-          <AiOutlineLine onClick={handleDecrease} />
+          <AiOutlineLine data-testid={"decrease"} onClick={handleDecrease} />
           <span>{amount}</span>
-          <AiOutlinePlus onClick={handleIncrease} />
+          <AiOutlinePlus data-testid={"increase"} onClick={handleIncrease} />
         </Button>
       </TextCard>
     </Card>
