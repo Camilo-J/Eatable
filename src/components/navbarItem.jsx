@@ -33,9 +33,10 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
-function NavBarItem({ name, icon, to, stroke }) {
+function NavBarItem({ icon, to, stroke }) {
   return (
     <StyledNavLink
+      data-testid={"link"}
       to={to}
       style={({ isActive }) => {
         if (!isActive) return;
@@ -43,7 +44,6 @@ function NavBarItem({ name, icon, to, stroke }) {
       stroke={stroke}
     >
       {icon}
-      {name}
     </StyledNavLink>
   );
 }
