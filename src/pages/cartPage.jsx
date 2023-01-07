@@ -1,8 +1,9 @@
 import styled from "@emotion/styled";
 import { FiShoppingCart } from "react-icons/fi";
 import { HiOutlineChevronLeft } from "react-icons/hi";
-import CustomButton from "../components/Button";
 
+import CustomButton from "../components/Button";
+import NotFound from "../components/notFound";
 import CartCard from "../components/cartCard";
 import { useAuth } from "../context/auth-context";
 import { typography } from "../styles";
@@ -52,21 +53,6 @@ const Amount = styled.span`
   color:#FA4A0C;
 `;
 
-const NotFound = styled.div`
-  margin-top: 8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2.7rem;
-  ${typography.head.sm}
-`;
-
-const SizeIcon = styled.section`
-  font-size: 7rem;
-  color: #c7c7c7;
-`;
-
 const CartPage = ({ changeAmount, orders, handleOrder, totalAmount }) => {
   const { navigate } = useAuth();
 
@@ -110,12 +96,7 @@ const CartPage = ({ changeAmount, orders, handleOrder, totalAmount }) => {
           </Main>
         </>
       ) : (
-        <NotFound>
-          <SizeIcon>
-            <FiShoppingCart />
-          </SizeIcon>
-          <p>No items in the cart</p>
-        </NotFound>
+        <NotFound icon={<FiShoppingCart />} text={"No items in the cart"} />
       )}
     </Container>
   );

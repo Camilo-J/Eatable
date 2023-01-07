@@ -4,6 +4,7 @@ import { useState } from "react";
 import { HiOutlineChevronLeft } from "react-icons/hi";
 import { RiCalendarTodoFill } from "react-icons/ri";
 
+import NotFound from "../components/notFound";
 import HistoryCard from "../components/historyCard";
 import { getOrders } from "../services/order-services";
 import { typography } from "../styles";
@@ -29,21 +30,6 @@ const ContainerCards = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
-`;
-
-const NotFound = styled.div`
-  margin-top: 8rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2.7rem;
-  ${typography.head.sm}
-`;
-
-const SizeIcon = styled.section`
-  font-size: 7rem;
-  color: #c7c7c7;
 `;
 
 const HistoryPage = () => {
@@ -74,12 +60,7 @@ const HistoryPage = () => {
           })}
         </ContainerCards>
       ) : (
-        <NotFound>
-          <SizeIcon>
-            <RiCalendarTodoFill />
-          </SizeIcon>
-          <p>No history yet</p>
-        </NotFound>
+        <NotFound icon={<RiCalendarTodoFill />} text={"No history yet"} />
       )}
     </Container>
   );
