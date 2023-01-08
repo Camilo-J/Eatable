@@ -11,6 +11,10 @@ const Container = styled.div`
   flex-direction: column;
   gap: 1rem;
   align-items: center;
+  transition: all 0.5s;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const FoodName = styled.p`

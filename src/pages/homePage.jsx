@@ -7,6 +7,7 @@ import { useAuth } from "../context/auth-context";
 import { typography } from "../styles";
 
 const ContainerCards = styled.div`
+  max-width: 414px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 3rem;
@@ -70,6 +71,7 @@ const SizeIcon = styled.section`
 `;
 
 const FilterOption = styled.div`
+  cursor: pointer;
   height: 55px;
   ${typography.text.md}
   transition: all 0.5s;
