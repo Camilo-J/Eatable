@@ -67,7 +67,7 @@ const Product = ({ handleFilter, Order, handleOrder }) => {
         <TextSection>
           <Title>
             <p>{product?.name}</p>
-            <Price>{`$${product?.price}`}</Price>
+            <Price data-testid="price">{`$${product?.price}`}</Price>
           </Title>
           <Body>
             <p>Description</p>
