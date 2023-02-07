@@ -93,7 +93,7 @@ const CartPage = ({ changeAmount, orders, handleOrder, totalAmount }) => {
               </FooterText>
               <CustomButton
                 handleCLick={handleNavigate}
-                disable={orders.lenght ? false : true}
+                disable={orders.length ? false : true}
               >
                 Checkout
               </CustomButton>
