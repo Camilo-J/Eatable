@@ -5,6 +5,7 @@ import { Global } from "@emotion/react";
 import { global, reset } from "./styles/global";
 import { BrowserRouter } from "react-router-dom";
 import { AuthProvider } from "./context/auth-context";
+import "./styles/style.css";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
