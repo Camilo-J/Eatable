@@ -1,8 +1,11 @@
 import styled from "@emotion/styled";
+import dayjs from "dayjs";
 import { useState } from "react";
 import { HiOutlineChevronDown } from "react-icons/hi";
 
 import { typography } from "../styles";
+
+dayjs().format();
 
 const Card = styled.div`
   width: 325px;
@@ -83,7 +86,7 @@ const HistoryCard = ({ date, items, addres }) => {
   return (
     <Card>
       <MainView>
-        <p>{date}</p>
+        <p>{dayjs(date).format("ddd,MMM DD,YYYY")}</p>
         <MainText>
           <span>{items.length} items</span>
           <Amount>
