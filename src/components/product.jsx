@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import Image from "./image";
 import CustomButton from "./Button";
 import { typography } from "../styles";
+import { useAuth } from "../context/auth-context";
 
 const Container = styled.div`
   padding: 40px 50px;
@@ -48,6 +49,7 @@ const Description = styled.p`
 
 const Product = ({ handleFilter, Order, handleOrder }) => {
   const { id } = useParams();
+  const { navigate } = useAuth();
   let product = handleFilter(Number.parseInt(id));
 
   let orderCart = Order(Number.parseInt(id));
@@ -58,7 +60,10 @@ const Product = ({ handleFilter, Order, handleOrder }) => {
 
   return (
     <Container>
-      <HiOutlineChevronLeft />
+      <HiOutlineChevronLeft
+        style={{ cursor: "pointer" }}
+        onClick={() => navigate(-1)}
+      />
       <Main>
         <div>
           <Image size={"md"} src={product?.picture_url} />

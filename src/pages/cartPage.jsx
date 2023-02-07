@@ -23,13 +23,14 @@ const Header = styled.div`
   font-weight: 600;
   text-align: center;
   display: flex;
-  gap: 8.25rem;
+  gap: 8rem;
 `;
 const Main = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 2rem;
 `;
 const ContainerCard = styled.div`
   display: flex;
@@ -59,13 +60,17 @@ const CartPage = ({ changeAmount, orders, handleOrder, totalAmount }) => {
   function handleNavigate() {
     navigate("checkout");
   }
+
   return (
     <Container>
       <Header>
-        <HiOutlineChevronLeft />
+        <HiOutlineChevronLeft
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate(-1)}
+        />
         <p>Cart</p>
       </Header>
-      {orders.lenght ? (
+      {orders.length ? (
         <>
           <Main>
             <ContainerCard>

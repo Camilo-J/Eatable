@@ -8,9 +8,10 @@ import NotFound from "../components/notFound";
 import HistoryCard from "../components/historyCard";
 import { getOrders } from "../services/order-services";
 import { typography } from "../styles";
+import { useAuth } from "../context/auth-context";
 
 const Container = styled.div`
-  padding: 57px 50px;
+  padding: 57px 30px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -34,6 +35,7 @@ const ContainerCards = styled.div`
 
 const HistoryPage = () => {
   const [orders, setOrders] = useState([]);
+  const { navigate } = useAuth();
 
   useEffect(() => {
     getOrders().then(setOrders).catch(console.log);
@@ -42,7 +44,10 @@ const HistoryPage = () => {
   return (
     <Container>
       <Header>
-        <HiOutlineChevronLeft />
+        <HiOutlineChevronLeft
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate(-1)}
+        />
         <p>Cart</p>
       </Header>
 
