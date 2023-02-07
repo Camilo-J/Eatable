@@ -24,6 +24,11 @@ const Label = styled.label`
   ${typography.text.sm}
 `;
 
+const Error = styled.p`
+  color: orange;
+  padding-left: 1rem;
+`;
+
 const Input = ({
   id,
   name,
@@ -33,6 +38,7 @@ const Input = ({
   placeholder,
   label,
   color,
+  error,
 }) => {
   return (
     <Container>
@@ -46,6 +52,7 @@ const Input = ({
         placeholder={placeholder}
         color={color}
       />
+      {error && <Error size="sm">{error}</Error>}
     </Container>
   );
 };

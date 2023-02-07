@@ -20,7 +20,7 @@ function AuthProvider(props) {
   }, []);
 
   function login(credentials) {
-    auth.login(credentials).then(setUser).catch(console.log);
+    return auth.login(credentials).then(setUser);
   }
 
   function logout() {
@@ -31,7 +31,7 @@ function AuthProvider(props) {
   }
 
   function signup(userData) {
-    createUser(userData).then(setUser).catch(console.log);
+    return createUser(userData).then(setUser);
   }
 
   function update(userData) {

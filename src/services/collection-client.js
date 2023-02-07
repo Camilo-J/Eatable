@@ -5,7 +5,7 @@ export default async function collectionClient(
   { method, headers, body } = {}
 ) {
   const token = sessionStorage.getItem(tokenKey);
-  console.log(body);
+
   if (token) {
     headers = {
       Authorization: `Bearer ${token}`,
@@ -35,7 +35,7 @@ export default async function collectionClient(
     } catch (error) {
       throw new Error(response.statusText);
     }
-    throw new Error(data.errors);
+    throw new Error(JSON.stringify(data.errors));
   }
 
   try {

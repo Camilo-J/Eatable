@@ -34,8 +34,7 @@ const HeaderText = styled.div`
 
 const HeaderContainer = styled.div`
   background-color: ${colors.white};
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-radius: 30px;
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.06);
 `;
 
@@ -83,6 +82,10 @@ const SessionPage = () => {
     email: "",
     password: "",
   });
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
 
   const { email, password } = formData;
   const { loginOp, sign_upOp } = options;
@@ -94,9 +97,18 @@ const SessionPage = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    if (loginOp) login(formData);
+    if (loginOp)
+      login(formData).catch((error) => {
+        const newError = JSON.parse(error.message);
+        setErrors({ ...errors, password: newError });
+      });
 
-    if (sign_upOp) signup(formData);
+    if (sign_upOp)
+      signup(formData).catch((error) => {
+        console.log(error);
+        const newErrors = JSON.parse(error.message);
+        setErrors({ ...errors, ...newErrors });
+      });
     navigate("/profile");
   }
 
@@ -137,6 +149,7 @@ const SessionPage = () => {
           onChange={handleChange}
           placeholder="example@mail.com"
           label="Email"
+          error={errors.email.toString()}
         />
         <Input
           name="password"
@@ -145,6 +158,7 @@ const SessionPage = () => {
           onChange={handleChange}
           placeholder="*******"
           label="Password"
+          error={errors.password.toString()}
         />
 
         <ContainerButton>
