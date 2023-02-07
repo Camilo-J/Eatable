@@ -16,11 +16,10 @@ import { createOrder } from "./services/order-services";
 import HistoryPage from "./pages/historyPage";
 
 const Div = styled("div")`
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // align-items: center;
 `;
 
 function AuthenticatedApp() {

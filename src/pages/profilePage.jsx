@@ -13,6 +13,7 @@ const Container = styled.div`
   align-items: center;
   padding: 50px 30px 30px 30px;
   justify-content: space-between;
+  gap: 4rem;
 `;
 
 const Main = styled.div`
@@ -40,6 +41,7 @@ const EditButton = styled.button`
   all: unset;
   ${typography.text.md}
   color: #FA4A0C;
+  cursor: pointer;
 `;
 
 const DataProfile = styled.div`
@@ -75,6 +77,7 @@ const HistoryButton = styled.button`
   padding: 19px 20px;
   display: flex;
   justify-content: space-between;
+  cursor: pointer;
   ${typography.text.lg}
 `;
 

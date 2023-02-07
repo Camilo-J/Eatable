@@ -53,6 +53,17 @@ const Filters = styled.section`
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
+
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #fa4a0c;
+    border-radius: 20px;
+  }
+  ::-webkit-overflow-scrolling: touch;
 `;
 
 const NotFound = styled.div`
@@ -122,7 +133,10 @@ const HomePage = ({
               placeholder={"Search"}
             ></Input>
           </Search>
-          <FiShoppingCart onClick={() => navigate("cart")} />
+          <FiShoppingCart
+            style={{ cursor: "pointer", color: "#fa4a0c" }}
+            onClick={() => navigate("cart")}
+          />
         </Header>
         {search && products.length ? (
           <Results>{`Found ${products.length} results`}</Results>
