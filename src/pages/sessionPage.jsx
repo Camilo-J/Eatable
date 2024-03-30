@@ -106,7 +106,7 @@ const SessionPage = () => {
     if (sign_upOp)
       signup(formData).catch((error) => {
         console.log(error);
-        const newErrors = JSON.parse(error.message);
+        const newErrors = error.message;
         setErrors({ ...errors, ...newErrors });
       });
     navigate("/profile");
