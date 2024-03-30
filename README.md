@@ -4,6 +4,10 @@ This is an app where you can find many delicious food and choose what you like. 
 
 ## Screenshots
 
+   <img src="public/main.png" alt="Image description" width="600" height="400">
+   <img src="public/foods.png" alt="Image description" width="600" height="400">
+   <img src="public/cart.png" alt="Image description" width="600" height="400">
+
 ## Built With
 
 - [React](https://react.dev/)
