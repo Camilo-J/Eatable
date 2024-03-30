@@ -72,15 +72,13 @@ const EditProfilePage = () => {
     setFormData({ ...formData, [name]: value });
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
-    update(formData);
-    console.log(JSON.parse(localStorage.getItem("CardOrders")).length);
-    if (JSON.parse(localStorage.getItem("CardOrders")).length === 0)
-      navigate("./profile");
+    await update(formData);
+    const orders = JSON.parse(localStorage.getItem("CardOrders"));
+    if (!orders) return navigate("./profile");
 
-    if (JSON.parse(localStorage.getItem("CardOrders")).length)
-      navigate("./checkout");
+    if (orders.length) return navigate("./checkout");
   }
 
   return (
