@@ -3,7 +3,7 @@ import { Order, OrderPayload } from '../types/order.ts';
 
 export async function createOrder(data: OrderPayload) {
   return await collectionClient<Order>('/orders', {
-    body: data
+    body: { ...data }
   });
 }
 

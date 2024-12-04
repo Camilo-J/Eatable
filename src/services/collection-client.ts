@@ -1,4 +1,5 @@
 import { BASE_URI, tokenKey } from '../constants/setting.ts';
+import { tryit } from 'radashi';
 
 interface CollectionClientOptions {
   method?: string;
@@ -32,26 +33,24 @@ export default async function collectionClient<T>(
     body: body ? JSON.stringify(body) : null
   };
 
+
   const response = await fetch(`${BASE_URI}${endpoint}`, config);
-  console.log(response);
 
+  const getResponse = async () => {
+    return await response.json();
+  };
 
-  let data;
   if (!response.ok) {
-    try {
-      data = await response.json();
-    } catch (error) {
-      throw new Error(response.statusText);
-    }
-    throw new Error(JSON.stringify(data.errors));
+    const [error, bodyResponse] = await tryit(getResponse)();
+
+    if (error) throw new Error(error.message);
+
+    throw new Error(JSON.stringify(bodyResponse.errors));
   }
 
-  try {
-    data = await response.json();
-  } catch (error) {
-    console.log('Error', error);
-    data = response.statusText;
-  }
+  const [error, bodyResponse] = await tryit(getResponse)();
 
-  return data as T;
+  if (error) throw new Error(error.message);
+  
+  return bodyResponse as T;
 }

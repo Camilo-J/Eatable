@@ -6,22 +6,21 @@ import { Credentials } from '../types/auth';
 
 export async function login(credentials: Credentials) {
   const response = await collectionClient<User>('/login', {
-    body: credentials
+    body: { ...credentials }
   });
 
-  sessionStorage.setItem(tokenKey, response.token);
+  sessionStorage.setItem(tokenKey, response.token as string);
   return omit(response, ['token']);
 }
 
 export async function signup(userData: Credentials) {
   const response = await collectionClient<User>('/users', {
-    body: userData
+    body: { ...userData }
   });
 
-  sessionStorage.setItem(tokenKey, response.token);
+  sessionStorage.setItem(tokenKey, response.token as string);
   return omit(response, ['token']);
 }
-
 
 export async function logout() {
   await collectionClient('/logout', { method: 'DELETE' });
