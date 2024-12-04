@@ -1,14 +1,20 @@
 import { Route, Routes } from 'react-router';
 import { SessionPage } from '../Session';
 import { useUserStore } from '../../store/user.ts';
+import { useEffect } from 'react';
+import { Products } from '../Product';
 
 export function Root() {
-  const { user } = useUserStore();
+  const { user, getUser } = useUserStore();
+
+  useEffect(() => {
+    getUser().catch(() => console.log('User not fetched'));
+  }, [getUser]);
 
   return (
     <Routes>
-      {!user && <Route path="/*" element={<SessionPage />} />}
-      {user && <Route path="/*" element={<h1>Welcome {user.name}</h1>} />}
+      {!user && <Route index path="/*" element={<SessionPage />} />}
+      {user && <Route index path="/" element={<Products />} />}
     </Routes>
   );
 }

@@ -8,7 +8,7 @@ interface Props {
 export function HeaderOption({ name, active, handleClicked }: Props) {
   return (
     <div>
-      <button className="w-36 transition-all text-xl text-orange-600" onClick={handleClicked}>
+      <button className="w-36 transition-all text-lg text-orange-600" onClick={handleClicked}>
         {name}
       </button>
       <div className="mt-3 h-0.5" style={{
