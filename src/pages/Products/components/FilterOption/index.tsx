@@ -6,7 +6,8 @@ interface Props {
 }
 
 export function FilterOption({ name }: Props) {
-  const { filterSelected, updateFilter } = useProductStore();
+  const filterSelected = useProductStore(state => state.filterSelected);
+  const updateFilter = useProductStore(state => state.updateFilter);
 
   const handleFilter = () => {
     updateFilter(name);
