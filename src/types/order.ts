@@ -1,3 +1,5 @@
+import { Product } from './product.ts';
+
 interface OrderDetails {
   id: number;
   quantity: number;
@@ -15,7 +17,13 @@ export interface Order {
   order_details: OrderDetails[];
 }
 
+export interface OrderItem {
+  id: number;
+  quantity: number;
+  productDetails: Omit<Product, 'id'>;
+}
+
 export interface OrderPayload {
   delivery_address: string;
-  items: { id: number, quantity: number }[];
+  items: OrderItem[];
 }
