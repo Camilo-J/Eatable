@@ -1,5 +1,6 @@
 import { Order, OrderItem } from '../types/order.ts';
 import { create } from 'zustand';
+import { createOrder } from '../services/orderServices.ts';
 
 interface OrderState {
   newOrders: OrderItem[];
@@ -7,13 +8,15 @@ interface OrderState {
   getOrdersStored: () => Promise<void>;
   addOrder: (order: OrderItem) => void;
   updateAmountOrder: (productId: number, quantity: number) => void;
+  registerOrders: (address: string, items: OrderItem[]) => Promise<void>;
+  removeOrder: (productId: number) => void;
 }
 
 export const useOrderStore = create<OrderState>()((set) => ({
   newOrders: [] as OrderItem[],
   ordersStored: [] as Order[],
   getOrdersStored: async () => {
-    const orders = localStorage.getItem('orders');
+    const orders = localStorage.getItem('ordersStored');
     if (orders) {
       set({ ordersStored: JSON.parse(orders) });
     }
@@ -35,6 +38,23 @@ export const useOrderStore = create<OrderState>()((set) => ({
       });
       localStorage.setItem('orders', JSON.stringify(orders));
       return { newOrders: orders };
+    });
+  },
+  removeOrder: (productId) => {
+    set((state) => {
+      const orders = state.newOrders.filter((order) => order.id !== productId);
+      localStorage.setItem('orders', JSON.stringify(orders));
+      return { newOrders: orders };
+    });
+  }
+  ,
+  registerOrders: async (address, items) => {
+    const response = await createOrder({ delivery_address: address, items });
+    set((state) => {
+      const orders = [...state.ordersStored, response];
+      localStorage.setItem('orders', JSON.stringify([]));
+      localStorage.setItem('ordersStored', JSON.stringify(orders));
+      return { ordersStored: orders, newOrders: [] };
     });
   }
 }));

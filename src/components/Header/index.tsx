@@ -11,7 +11,7 @@ export function Header({ text }: Props) {
   return (
     <section className="flex items-center">
       <IconChevronLeft cursor="pointer" color="gray" size={23} onClick={() => navigate(-1)} />
-      {text && <p className="ml-40 text-center text-lg font-semibold text-gray-700">{text}</p>}
+      {text && <p className="w-full text-center text-lg font-semibold text-gray-700">{text}</p>}
     </section>
   );
 }

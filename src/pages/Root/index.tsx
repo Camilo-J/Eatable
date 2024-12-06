@@ -6,6 +6,8 @@ import { Products } from '../Products';
 import { useProductStore } from '../../store/product.ts';
 import { Product } from '../Products/components/pages/Product';
 import { Orders } from '../Orders';
+import { Checkout } from '../Orders/components/pages/Checkout';
+import { History } from '../Orders/components/pages/History';
 
 export function Root() {
   const { user, getUser } = useUserStore();
@@ -29,7 +31,10 @@ export function Root() {
             <Route path="products" element={<Products />} />
             <Route path="products/:id" element={<Product />} />
           </Route>
-          <Route path="orders" element={<Orders />} />
+          <Route path="orders" element={<Orders />}>
+          </Route>
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="history" element={<History />} />
           <Route path="*" element={<Navigate to="/" />} />
         </>
       }

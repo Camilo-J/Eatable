@@ -11,7 +11,7 @@ interface Props {
 
 export function OrderCard({ product, productId, quantity }: Props) {
   const updateAmountOrder = useOrderStore(state => state.updateAmountOrder);
-
+  const removeOrder = useOrderStore(state => state.removeOrder);
   if (!product) return null;
 
   const handleIncrement = () => {
@@ -19,9 +19,9 @@ export function OrderCard({ product, productId, quantity }: Props) {
   };
 
   const handleDecrement = () => {
-    if (quantity > 1) {
-      updateAmountOrder(productId, quantity - 1);
-    }
+    if (quantity > 1) return updateAmountOrder(productId, quantity - 1);
+
+    removeOrder(productId);
   };
 
   return (
