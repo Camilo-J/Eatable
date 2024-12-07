@@ -1,6 +1,7 @@
 import { Search } from './components/Search';
 import { FilterContainer } from './components/FilterContainer';
 import { ProductContainer } from './components/ProductContainer';
+import { Navbar } from '../../components/Navbar';
 
 
 export function Products() {
@@ -12,6 +13,7 @@ export function Products() {
       </section>
 
       <ProductContainer />
+      <Navbar />
     </div>
   );
 }
