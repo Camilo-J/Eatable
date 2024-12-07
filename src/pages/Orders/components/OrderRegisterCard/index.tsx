@@ -25,7 +25,7 @@ export function OrderRegisterCard({ order }: Props) {
         <div className="flex justify-between">
           <p>{order.order_details?.length || 0} items</p>
           <p style={{ color: '#fa4a0c' }}>
-            {order.order_details?.reduce((acc, current) => acc + current.subtotal, 0)}
+            ${order.order_details?.reduce((acc, current) => acc + current.subtotal, 0)}
           </p>
         </div>
       </div>

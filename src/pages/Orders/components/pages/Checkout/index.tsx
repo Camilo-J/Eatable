@@ -10,7 +10,9 @@ export function Checkout() {
   const registerOrders = useOrderStore(state => state.registerOrders);
   const newOrders = useOrderStore(state => state.newOrders);
   if (!user) return null;
+
   const { name, email, phone, address } = user;
+  const total = newOrders.reduce((acc, { productDetails, quantity }) => acc + productDetails.price * quantity, 0);
 
   const handleCompleteOrder = async () => {
     await registerOrders(address || '', newOrders);
@@ -39,8 +41,9 @@ export function Checkout() {
         </div>
         <InvoiceBox className="px-0 mt-3" />
 
-        <button className="w-80 h-16 px-12 py-3 rounded-3xl text-white font-semibold
-        bg-orange-600 mt-8 hover:bg-orange-500" onClick={handleCompleteOrder}>
+        <button className={`w-80 h-16 px-12 py-3 rounded-3xl text-white font-semibold
+        bg-orange-600 mt-8 ${total === 0 ? 'bg-orange-400' : 'hover:bg-orange-500'}`} onClick={handleCompleteOrder}
+                disabled={total === 0}>
           Complete Order
         </button>
       </div>

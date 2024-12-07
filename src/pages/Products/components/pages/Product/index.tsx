@@ -19,9 +19,9 @@ export function Product() {
   };
 
   return (
-    <div className="px-12 py-10 font-code">
+    <div className="px-5 py-10 font-code">
       <Header />
-      <div className="mt-6 flex flex-col items-center gap-20">
+      <div className="px-12 mt-6 flex flex-col items-center gap-14">
         <div className="w-60 h-60">
           <img src={productSelected?.picture_url} alt={productSelected?.name}
                className="w-full h-full object-cover rounded-full" />
