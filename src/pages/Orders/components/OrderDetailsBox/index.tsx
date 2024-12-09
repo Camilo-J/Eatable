@@ -7,7 +7,7 @@ interface Props {
 
 export function OrderDetailsBox({ id, quantity, product_name, subtotal }: Props) {
   return (
-    <div key={`detail-${id}`} className="flex justify-between">
+    <div key={`detail-${id}-${Date.now()}`} className="flex justify-between">
       <p>{quantity}-{product_name}</p>
       <p>${subtotal}</p>
     </div>

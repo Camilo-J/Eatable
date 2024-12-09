@@ -16,5 +16,6 @@ export async function updateUser(userData: Partial<User>) {
 
 export async function getUser() {
   const response = await collectionClient<User>('/profile');
+
   return omit(response, ['token']);
 }

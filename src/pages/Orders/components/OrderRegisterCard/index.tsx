@@ -18,8 +18,7 @@ export function OrderRegisterCard({ order }: Props) {
   };
 
   return (
-    <div key={order.id}
-         className="w-80 min-h-[106px] px-5 pt-4 pb-0 bg-white flex flex-col gap-1 items-center rounded-3xl">
+    <div className="w-80 h-fit px-5 pt-4 pb-0 bg-white flex flex-col gap-1 items-center rounded-3xl">
       <div className="w-full flex flex-col gap-3">
         <p>{format(order.created_at, 'ddd, MMM D, YYYY', language) || '---'}</p>
         <div className="flex justify-between">

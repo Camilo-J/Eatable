@@ -22,7 +22,7 @@ export function Root() {
 
     getProducts().catch(() => console.log('Products not fetched'));
   }, [getUser, getProducts, user, products.length]);
-  console.log(products);
+
   return (
     <Routes>
       {!user && <Route index path="/*" element={<SessionPage />} />}

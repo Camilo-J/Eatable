@@ -1,6 +1,6 @@
 import { Order, OrderItem } from '../types/order.ts';
 import { create } from 'zustand';
-import { createOrder } from '../services/orderServices.ts';
+import { createOrder, getOrders } from '../services/orderServices.ts';
 
 interface OrderState {
   newOrders: OrderItem[];
@@ -16,9 +16,9 @@ export const useOrderStore = create<OrderState>()((set) => ({
   newOrders: [] as OrderItem[],
   ordersStored: [] as Order[],
   getOrdersStored: async () => {
-    const orders = localStorage.getItem('ordersStored');
+    const orders = await getOrders();
     if (orders) {
-      set({ ordersStored: JSON.parse(orders) });
+      set({ ordersStored: orders });
     }
   },
   addOrder: (order) => {
