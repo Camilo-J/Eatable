@@ -16,7 +16,7 @@ export function Checkout() {
 
   const handleCompleteOrder = async () => {
     await registerOrders(address || '', newOrders);
-    navigate('/history');
+    navigate('/orders/history');
   };
 
   return (
