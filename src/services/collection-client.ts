@@ -37,6 +37,7 @@ export default async function collectionClient<T>(
   const response = await fetch(`${BASE_URI}${endpoint}`, config);
 
   const getResponse = async () => {
+    if (response.status === 204) return null;
     return await response.json();
   };
 
@@ -51,6 +52,6 @@ export default async function collectionClient<T>(
   const [error, bodyResponse] = await tryit(getResponse)();
 
   if (error) throw new Error(error.message);
-  
+
   return bodyResponse as T;
 }
