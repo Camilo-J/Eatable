@@ -17,15 +17,16 @@ export function History() {
   }, [orderStored.length, orderFetched]);
 
   return (
-    <div className="py-8 px-5 flex flex-col gap-4">
+    <div className="py-8 px-5 flex flex-col gap-4 relative">
       <Header text="History" />
 
-      {Boolean(orderStored?.length) && (<div className="flex flex-col gap-3 text-sm text-gray-500 items-center">
-        {orderStored.map(order => (<OrderRegisterCard key={`register-${order.id}`} order={order} />))}
-      </div>)}
+      {Boolean(orderStored?.length) && (
+        <div className="h-[550px] overflow-auto flex flex-col gap-3 text-sm text-gray-500 items-center">
+          {orderStored.map(order => (<OrderRegisterCard key={`register-${order.id}`} order={order} />))}
+        </div>)}
 
       {!orderStored?.length && (<NotFound text="No History yet" icon={<IconCalendar size="100" color="gray" />} />)}
-      <div className="mt-[627px]">
+      <div className="absolute w-[408px] -bottom-[222px]">
         <Navbar />
       </div>
     </div>

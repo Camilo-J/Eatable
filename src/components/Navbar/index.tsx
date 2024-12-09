@@ -10,7 +10,7 @@ export function Navbar() {
       <NavLink to="/profile" className={({ isActive }) => isActive ? 'text-orange-600' : 'text-gray-500'}>
         <IconUser size={35} />
       </NavLink>
-      <NavLink to="/history" className={({ isActive }) => isActive ? 'text-orange-600' : 'text-gray-500'}>
+      <NavLink to="/orders/history" className={({ isActive }) => isActive ? 'text-orange-600' : 'text-gray-500'}>
         <IconClockSearch size={35} />
       </NavLink>
 
