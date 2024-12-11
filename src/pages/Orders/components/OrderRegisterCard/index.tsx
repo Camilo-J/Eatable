@@ -33,7 +33,8 @@ export function OrderRegisterCard({ order }: Props) {
         <div className="border-b-[1px] pb-2">
           <p className="font-semibold mb-2">Orders</p>
           {order.order_details.map(detail => (
-            <OrderDetailsBox id={detail.id} subtotal={detail.subtotal} quantity={detail.quantity}
+            <OrderDetailsBox key={`detail-${detail.id}-${Date.now()}`} id={detail.id} subtotal={detail.subtotal}
+                             quantity={detail.quantity}
                              product_name={detail.product_name} />))}
         </div>
         <div>

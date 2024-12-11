@@ -13,7 +13,6 @@ export function Navbar() {
       <NavLink to="/orders/history" className={({ isActive }) => isActive ? 'text-orange-600' : 'text-gray-500'}>
         <IconClockSearch size={35} />
       </NavLink>
-
     </nav>
   );
 }

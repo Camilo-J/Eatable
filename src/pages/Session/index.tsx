@@ -1,41 +1,28 @@
-import { FormEvent, useState } from 'react';
+import { useActionState, useState } from 'react';
 import { Input } from '../../components/Input';
 import { HeaderOption } from './components/HeaderOption';
 import title from '../../assets/Eatable.svg';
 import { useUserStore } from '../../store/user.ts';
-
+import { authAction } from './actions/auth.ts';
 
 interface Props {
   loginOp: boolean;
   signupOp: boolean;
+  error?: string;
 }
 
 export function SessionPage() {
-  const [options, setOptions] = useState<Props>({ loginOp: true, signupOp: false });
   const { login, signup } = useUserStore();
+  const [options, setOptions] = useState<Props>({ loginOp: true, signupOp: false });
+  const selectedOption = options.loginOp ? 'login' : 'signup';
+  const [, action, isPending] = useActionState(authAction({ login, signup, option: selectedOption }), { message: '' });
 
   const handleOptions = (option: string) => {
     if (option === 'login') {
-      setOptions({ loginOp: true, signupOp: false });
-      return;
+      return setOptions({ loginOp: true, signupOp: false, error: '' });
     }
 
-    setOptions({ loginOp: false, signupOp: true });
-  };
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement> | undefined) => {
-    event?.preventDefault();
-    const credentials = new FormData(event?.target as unknown as HTMLFormElement);
-
-    if (options.loginOp) {
-      return await login({
-        email: credentials.get('email') as string,
-        password: credentials.get('password') as string
-      });
-    }
-
-    // signup
-    await signup({ email: credentials.get('email') as string, password: credentials.get('password') as string });
+    setOptions({ loginOp: false, signupOp: true, error: '' });
   };
 
   return (
@@ -50,11 +37,21 @@ export function SessionPage() {
           <HeaderOption name="Sign up" active={options.signupOp} handleClicked={() => handleOptions('signup')} />
         </div>
       </section>
-      <form className="flex flex-col items-center gap-12" onSubmit={handleSubmit}>
+      <form className="flex flex-col items-center gap-12" action={action}>
         <Input id="email" type="email" name="email" label="Email" placeholder="user@email.com" />
-        <Input id="password" type="password" name="password" label="Password" placeholder="********" />
-        <div>
-          <button className="w-80 h-14 mt-20 text-white bg-orange-600 rounded-3xl">
+        <Input id="password" type="password" name="password" label="Password" placeholder="********"
+               error={options?.error} />
+        <div className="relative">
+          <div
+            className={`${isPending ? '' : 'hidden'} absolute bottom-4 left-20
+            h-6 w-6 animate-spin rounded-full border-4 border-solid
+            border-current border-e-transparent align-[-0.125em]
+            text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white`}
+            role="status" />
+
+          <button
+            className={`w-80 h-14 mt-20 text-white bg-orange-600 rounded-3xl ${isPending ? 'bg-orange-400' : 'hover:bg-orange-500'}`}
+            disabled={isPending}>
             {options.signupOp ? 'Sign up' : 'Log in'}
           </button>
         </div>
