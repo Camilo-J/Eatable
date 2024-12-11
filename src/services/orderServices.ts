@@ -1,5 +1,5 @@
 import collectionClient from './collection-client';
-import { Order, OrderPayload } from '../types/order.ts';
+import { Order, OrderPayload } from '@/types/order.ts';
 import { omit } from 'radashi';
 
 export async function createOrder(data: OrderPayload) {

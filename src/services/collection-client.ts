@@ -33,7 +33,6 @@ export default async function collectionClient<T>(
     body: body ? JSON.stringify(body) : null
   };
 
-
   const response = await fetch(`${BASE_URI}${endpoint}`, config);
 
   const getResponse = async () => {

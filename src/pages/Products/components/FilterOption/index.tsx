@@ -1,4 +1,4 @@
-import { useProductStore } from '../../../../store/product.ts';
+import { useProductStore } from '@/store/product.ts';
 import { capitalize } from 'radashi';
 
 interface Props {
@@ -14,7 +14,8 @@ export function FilterOption({ name }: Props) {
   };
 
   return (
-    <div className="cursor-pointer h-14" style={{ color: filterSelected === name ? '#fa4a0c' : '' }}
+    <div data-testid="filter-option" className="cursor-pointer h-14"
+         style={{ color: filterSelected === name ? '#fa4a0c' : '' }}
          onClick={handleFilter}>
       <p className="px-4">{capitalize(name)}</p>
       <div className="mt-2.5 h-0.5"

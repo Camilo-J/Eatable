@@ -1,4 +1,4 @@
-import { Product } from '../../../../types/product.ts';
+import { Product } from '@/types/product.ts';
 import { useNavigate } from 'react-router';
 import { capitalize } from 'radashi';
 
@@ -15,8 +15,8 @@ export function ProductCard({ product }: Props) {
   };
 
   return (
-    <div
-      className="w-40 h-56 rounded-3xl flex flex-col items-center
+    <div data-testid="product-card"
+         className="w-40 h-56 rounded-3xl flex flex-col items-center
        duration-500 cursor-pointer hover:scale-105 bg-white" onClick={handleClick}>
       <div className="w-32 h-32 rounded-full relative -top-6" style={{ boxShadow: '0px 20px 20px rgba(0, 0, 0, 0.2)' }}>
         <img src={product.picture_url} alt={product.name} className="w-full h-full object-cover rounded-full" />

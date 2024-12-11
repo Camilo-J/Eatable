@@ -1,4 +1,4 @@
-import { useProductStore } from '../../../../store/product.ts';
+import { useProductStore } from '@/store/product.ts';
 import { ProductCard } from '../ProductCard';
 
 export function ProductContainer() {
