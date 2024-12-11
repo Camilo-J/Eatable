@@ -26,4 +26,6 @@ export async function logout() {
   await collectionClient('/logout', { method: 'DELETE' });
 
   sessionStorage.removeItem(tokenKey);
+  localStorage.removeItem('orders');
+  localStorage.removeItem('ordersStored');
 }

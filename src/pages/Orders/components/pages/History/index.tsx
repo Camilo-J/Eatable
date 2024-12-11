@@ -11,10 +11,8 @@ export function History() {
   const orderFetched = useOrderStore(state => state.getOrdersStored);
 
   useEffect(() => {
-    if (orderStored?.length) return;
-
     orderFetched().catch(() => console.log('Orders not fetched'));
-  }, [orderStored.length, orderFetched]);
+  }, [orderFetched]);
 
   return (
     <div className="py-8 px-5 flex flex-col gap-4 relative">
@@ -22,12 +20,13 @@ export function History() {
 
       {Boolean(orderStored?.length) && (
         <div
-          className="filterScrollBar h-[550px] overflow-y-scroll flex flex-col gap-3 text-sm text-gray-500 items-center">
+          className="filterScrollBar h-[660px] overflow-y-scroll flex flex-col gap-3 text-sm text-gray-500 items-center">
           {orderStored.map(order => (<OrderRegisterCard key={`register-${order.id}-${Date.now()}`} order={order} />))}
         </div>)}
 
       {!orderStored?.length && (<NotFound text="No History yet" icon={<IconCalendar size="100" color="gray" />} />)}
-      <div className="absolute w-[408px] -bottom-[222px]">
+
+      <div className={`absolute w-[408px] ${!orderStored?.length ? '-bottom-[500px]' : '-bottom-[100px]'}`}>
         <Navbar />
       </div>
     </div>

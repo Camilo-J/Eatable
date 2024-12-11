@@ -1,9 +1,8 @@
 import { Navigate, Route, Routes } from 'react-router';
 import { SessionPage } from '../Session';
 import { useUserStore } from '../../store/user.ts';
-import { useEffect } from 'react';
+import { use } from 'react';
 import { Products } from '../Products';
-import { useProductStore } from '../../store/product.ts';
 import { Product } from '../Products/components/pages/Product';
 import { Orders } from '../Orders';
 import { Checkout } from '../Orders/components/pages/Checkout';
@@ -11,17 +10,13 @@ import { History } from '../Orders/components/pages/History';
 import { Profile } from '../Profile';
 import { UpdateProfile } from '../Profile/components/pages/UpdateProfile';
 
-export function Root() {
-  const { user, getUser } = useUserStore();
-  const products = useProductStore(state => state.products);
-  const getProducts = useProductStore(state => state.getProducts);
+interface Props {
+  userResponse: Promise<unknown>;
+}
 
-  useEffect(() => {
-    if (!user) getUser().catch(() => console.log('User not fetched'));
-    if (products.length) return;
-
-    getProducts().catch(() => console.log('Products not fetched'));
-  }, [getUser, getProducts, user, products.length]);
+export function Root({ userResponse }: Props) {
+  use(userResponse);
+  const user = useUserStore(state => state.user);
 
   return (
     <Routes>
