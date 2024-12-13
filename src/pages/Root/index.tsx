@@ -1,14 +1,14 @@
 import { Navigate, Route, Routes } from 'react-router';
-import { SessionPage } from '../Session';
-import { useUserStore } from '../../store/user.ts';
+import { SessionPage } from '@/pages/Session';
+import { useUserStore } from '@/store/user.ts';
 import { use } from 'react';
-import { Products } from '../Products';
-import { Product } from '../Products/components/pages/Product';
-import { Orders } from '../Orders';
-import { Checkout } from '../Orders/components/pages/Checkout';
-import { History } from '../Orders/components/pages/History';
-import { Profile } from '../Profile';
-import { UpdateProfile } from '../Profile/components/pages/UpdateProfile';
+import { Products } from '@/pages/Products';
+import { Product } from '@/pages/Products/components/pages/Product';
+import { Orders } from '@/pages/Orders';
+import { Checkout } from '@/pages/Orders/components/pages/Checkout';
+import { History } from '@/pages/Orders/components/pages/History';
+import { Profile } from '@/pages/Profile';
+import { UpdateProfile } from '@/pages/Profile/components/pages/UpdateProfile';
 
 interface Props {
   userResponse: Promise<unknown>;

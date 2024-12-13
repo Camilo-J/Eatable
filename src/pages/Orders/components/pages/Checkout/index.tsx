@@ -1,7 +1,7 @@
-import { Header } from '../../../../../components/Header';
-import { useUserStore } from '../../../../../store/user.ts';
-import { InvoiceBox } from '../../InvoiceBox';
-import { useOrderStore } from '../../../../../store/order.ts';
+import { Header } from '@/components/Header';
+import { useUserStore } from '@/store/user.ts';
+import { InvoiceBox } from '@/pages/Orders/components/InvoiceBox';
+import { useOrderStore } from '@/store/order.ts';
 import { useNavigate } from 'react-router';
 import { useTransition } from 'react';
 
@@ -24,7 +24,7 @@ export function Checkout() {
   };
 
   return (
-    <div className="px-5 pt-10 pb-8 font-code text-gray-700">
+    <div className="px-5 pt-10 pb-8 font-code text-gray-700" data-testid="checkout-container">
       <Header text="Checkout" />
       <div className="h-full flex flex-col justify-between px-10 mt-4 gap-4">
         <p className="font-semibold text-xl">Delivery</p>
@@ -44,7 +44,7 @@ export function Checkout() {
           <div className="h-[1px] bg-gray-500" />
         </div>
         <InvoiceBox className="px-0 mt-3" />
-        
+
         <div className="relative">
           <div
             className={`${isPending ? '' : 'hidden'} absolute bottom-5 left-10

@@ -20,7 +20,7 @@ export function Search() {
 
 
   return (
-    <div className=" flex justify-between items-center text-md text-gray-500">
+    <div className="flex justify-between items-center text-md text-gray-500" data-testid="search-component">
       <div className="flex items-center gap-4">
         {search.length ?
           <IconChevronLeft data-testid="chevron-icon" color="gray" size={23} onClick={resetSearch} cursor="pointer" /> :

@@ -1,4 +1,4 @@
-import { BASE_URI, tokenKey } from '../constants/setting.ts';
+import { BASE_URI, tokenKey } from '@/constants/setting.ts';
 import { tryit } from 'radashi';
 
 interface CollectionClientOptions {

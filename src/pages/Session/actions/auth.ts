@@ -1,5 +1,5 @@
 import { tryit } from 'radashi';
-import { AuthActionType } from '../../../constants/auth.ts';
+import { AuthActionType } from '@/constants/auth.ts';
 
 type Error = {
   message: string;

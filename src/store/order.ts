@@ -1,6 +1,6 @@
-import { Order, OrderItem } from '../types/order.ts';
+import { Order, OrderItem } from '@/types/order.ts';
 import { create } from 'zustand';
-import { createOrder, getOrders } from '../services/orderServices.ts';
+import { createOrder, getOrders } from '@/services/orderServices.ts';
 
 interface OrderState {
   newOrders: OrderItem[];

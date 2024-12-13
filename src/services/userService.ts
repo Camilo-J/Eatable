@@ -1,7 +1,7 @@
 import collectionClient from './collection-client';
-import { User } from '../types/user.ts';
+import { User } from '@/types/user.ts';
 import { omit } from 'radashi';
-import { tokenKey } from '../constants/setting.ts';
+import { tokenKey } from '@/constants/setting.ts';
 
 export async function updateUser(userData: Partial<User>) {
   const response = await collectionClient<User>('/profile', {

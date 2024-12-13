@@ -1,7 +1,7 @@
-import { Product } from '../../../../types/product.ts';
+import { Product } from '@/types/product.ts';
 import { capitalize } from 'radashi';
 import { IconMinus, IconPlus } from '@tabler/icons-react';
-import { useOrderStore } from '../../../../store/order.ts';
+import { useOrderStore } from '@/store/order.ts';
 
 interface Props {
   product?: Omit<Product, 'id'>;
@@ -25,7 +25,7 @@ export function OrderCard({ product, productId, quantity }: Props) {
   };
 
   return (
-    <div className="h-28 w-80 p-4 bg-white rounded-3xl flex gap-4 items-center">
+    <div data-testid="order-card" className="h-28 w-80 p-4 bg-white rounded-3xl flex gap-4 items-center">
       <div className="w-16 h-16">
         <img src={product.picture_url} alt={product.name}
              className="w-full h-full object-cover rounded-full"
@@ -40,9 +40,9 @@ export function OrderCard({ product, productId, quantity }: Props) {
 
       <div
         className="flex justify-center items-center gap-1 self-end h-6 w-20 px-1.5 rounded-3xl bg-orange-600 text-white">
-        <IconMinus size={20} cursor="pointer" onClick={handleDecrement} />
+        <IconMinus data-testid="decrease-icon" size={20} cursor="pointer" onClick={handleDecrement} />
         <p className="text-base">{quantity}</p>
-        <IconPlus size={20} cursor="pointer" onClick={handleIncrement} />
+        <IconPlus data-testid="increase-icon" size={20} cursor="pointer" onClick={handleIncrement} />
       </div>
     </div>
   );

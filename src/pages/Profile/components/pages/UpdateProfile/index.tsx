@@ -1,7 +1,7 @@
 import { Header } from '@/components/Header';
 import { Navbar } from '@/components/Navbar';
 import { useUserStore } from '@/store/user.ts';
-import { CustomInput } from '../../CustomInput';
+import { CustomInput } from '@/pages/Profile/components/CustomInput';
 import { FormEvent, useRef } from 'react';
 
 export function UpdateProfile() {

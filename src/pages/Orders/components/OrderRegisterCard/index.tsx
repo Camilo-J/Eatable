@@ -1,5 +1,5 @@
 import { IconChevronDown } from '@tabler/icons-react';
-import { Order } from '../../../../types/order.ts';
+import { Order } from '@/types/order.ts';
 import { useState } from 'react';
 import { OrderDetailsBox } from '../OrderDetailsBox';
 import { format } from '@formkit/tempo';
@@ -18,7 +18,8 @@ export function OrderRegisterCard({ order }: Props) {
   };
 
   return (
-    <div className="w-80 h-fit px-5 pt-4 pb-0 bg-white flex flex-col gap-1 items-center rounded-3xl">
+    <div className="w-80 h-fit px-5 pt-4 pb-0 bg-white flex flex-col gap-1 items-center rounded-3xl"
+         data-testid="order-register-card">
       <div className="w-full flex flex-col gap-3">
         <p>{format(order.created_at, 'ddd, MMM D, YYYY', language) || '---'}</p>
         <div className="flex justify-between">
@@ -29,6 +30,7 @@ export function OrderRegisterCard({ order }: Props) {
         </div>
       </div>
       <section
+        data-testid="hidden-section"
         className={`animateHeight w-full flex flex-col gap-3 transition-all duration-500 overflow-hidden ${open ? 'h-auto' : 'h-0'}`}>
         <div className="border-b-[1px] pb-2">
           <p className="font-semibold mb-2">Orders</p>
@@ -44,7 +46,7 @@ export function OrderRegisterCard({ order }: Props) {
       </section>
       <div className={`self-end transition-all duration-500 cursor-pointer ${open ? '-rotate-180' : ''}`}
            onClick={handleOpen}>
-        <IconChevronDown size={24} />
+        <IconChevronDown data-testid="icon-chevron" size={24} />
       </div>
     </div>
   );

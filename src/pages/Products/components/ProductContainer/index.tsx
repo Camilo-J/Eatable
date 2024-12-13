@@ -14,6 +14,7 @@ export function ProductContainer() {
 
   return (
     <section
+      data-testid="product-container"
       className="filterScrollBar h-[550px] pt-8 grid grid-cols-2 justify-center justify-items-center gap-x-3 gap-y-14 overflow-auto">
       {productsFiltered.map((product) => (<ProductCard key={`card-${product.id}`} product={product} />))}
     </section>
