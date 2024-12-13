@@ -4,8 +4,10 @@ import { UpdateProfile } from '@/pages/Profile/components/pages/UpdateProfile';
 import { MemoryRouter } from 'react-router';
 
 const updateFn = vi.fn();
+let returnNull = false;
 vi.mock('@/store/user', () => ({
   useUserStore: vi.fn((fn) => {
+    if (returnNull) return { user: null };
     if (fn) return updateFn;
 
     return {
@@ -65,5 +67,15 @@ describe('Update Profile Page', () => {
       phone: '654321',
       address: 'Test Address 1'
     });
+  });
+
+  it('should return null when there is no user', async () => {
+    returnNull = true;
+    render(<MemoryRouter><UpdateProfile /></MemoryRouter>);
+    const headerText = screen.queryByTestId('My Profile');
+    const logoutButton = screen.queryByTestId('update-button');
+
+    expect(headerText).not.toBeInTheDocument();
+    expect(logoutButton).not.toBeInTheDocument();
   });
 });
