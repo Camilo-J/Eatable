@@ -11,7 +11,9 @@ This is an app where you can find many delicious food and choose what you like. 
 ## Built With
 
 - [React](https://react.dev/)
-- [JavaScript](https://developer.mozilla.org/es/docs/Web/JavaScript)
+- [TypeScript](https://developer.mozilla.org/es/docs/Web/JavaScript)
+- [Zustand](https://zustand.docs.pmnd.rs/)
+- [Tailwind CSS](https://tailwindcss.com/)
 - [Netifly](https://www.netlify.com/)
 
 ## Getting Started
@@ -20,8 +22,7 @@ To get a local copy up and running follow these steps.
 
 ### Prerequisites
 
-- Node.js
-- npm
+- Bun
 
 ### Installation
 
@@ -34,13 +35,13 @@ To get a local copy up and running follow these steps.
 2. Install NPM packages
 
    ```bash
-   npm install
+   bun install
    ```
 
 3. Run the app
 
    ```bash
-   npm run dev
+   bun run dev
    ```
 
 ## License
