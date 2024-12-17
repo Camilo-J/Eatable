@@ -1,6 +1,6 @@
-import { Header } from '../../components/Header';
-import { Navbar } from '../../components/Navbar';
-import { useUserStore } from '../../store/user.ts';
+import { Header } from '@/components/Header';
+import { Navbar } from '@/components/Navbar';
+import { useUserStore } from '@/store/user.ts';
 import { useNavigate } from 'react-router';
 import { useTransition } from 'react';
 
@@ -46,7 +46,8 @@ export function Profile() {
             text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white`}
             role="status" />
           <button className={`w-80 h-16 px-12 py-3 rounded-3xl text-white font-semibold
-         bg-orange-600 mt-8 ${isPending ? 'bg-orange-400' : 'hover:bg-orange-500'}`} onClick={handleLogout}>
+         bg-orange-600 mt-8 ${isPending ? 'bg-orange-400' : 'hover:bg-orange-500'}`}
+                  data-testid="logout-button" onClick={handleLogout}>
             {isPending ? 'Logging out...' : 'Logout'}
           </button>
         </div>

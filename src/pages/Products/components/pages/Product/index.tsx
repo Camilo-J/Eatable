@@ -1,9 +1,9 @@
 import { useParams } from 'react-router';
-import { useProductStore } from '../../../../../store/product.ts';
+import { useProductStore } from '@/store/product.ts';
 import { capitalize, omit } from 'radashi';
-import { useOrderStore } from '../../../../../store/order.ts';
-import { type Product } from '../../../../../types/product.ts';
-import { Header } from '../../../../../components/Header';
+import { useOrderStore } from '@/store/order.ts';
+import { type Product } from '@/types/product.ts';
+import { Header } from '@/components/Header';
 
 export function Product() {
   const { id } = useParams();
@@ -37,6 +37,7 @@ export function Product() {
           </div>
         </section>
         <button
+          data-testid="add-product-button"
           className={`w-80 h-16 px-4 py-3 rounded-3xl text-white ${isProductInCart ? 'bg-orange-500' : 'bg-orange-600'}`}
           onClick={handleAddProductToCart}>
           {isProductInCart ? 'Product in Cart' : 'Add to Cart'}

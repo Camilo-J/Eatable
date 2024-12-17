@@ -1,4 +1,4 @@
-import { Product } from '../../../types/product.ts';
+import { Product } from '@/types/product.ts';
 
 export function getFilters(products: Product[]) {
   return products.reduce((acc, product) => {

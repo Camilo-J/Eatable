@@ -1,8 +1,8 @@
 import { useActionState, useState } from 'react';
-import { Input } from '../../components/Input';
+import { Input } from '@/components/Input';
 import { HeaderOption } from './components/HeaderOption';
-import title from '../../assets/Eatable.svg';
-import { useUserStore } from '../../store/user.ts';
+import title from '@/assets/Eatable.svg';
+import { useUserStore } from '@/store/user.ts';
 import { authAction } from './actions/auth.ts';
 
 interface Props {
@@ -51,7 +51,8 @@ export function SessionPage() {
 
           <button
             className={`w-80 h-14 mt-20 text-white bg-orange-600 rounded-3xl ${isPending ? 'bg-orange-400' : 'hover:bg-orange-500'}`}
-            disabled={isPending}>
+            disabled={isPending}
+            data-testid="button-session">
             {options.signupOp ? 'Sign up' : 'Log in'}
           </button>
         </div>

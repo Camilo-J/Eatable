@@ -1,8 +1,8 @@
 import { create } from 'zustand';
-import { User } from '../types/user.ts';
-import { getUser, updateUser } from '../services/userService.ts';
-import { login, logout, signup } from '../services/authServices.ts';
-import { Credentials } from '../types/auth.ts';
+import { User } from '@/types/user.ts';
+import { getUser, updateUser } from '@/services/userService.ts';
+import { login, logout, signup } from '@/services/authServices.ts';
+import { Credentials } from '@/types/auth.ts';
 
 interface UserState {
   user: User | null;

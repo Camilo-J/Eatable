@@ -1,4 +1,4 @@
-import title from '../../assets/Eatable.svg';
+import title from '@/assets/Eatable.svg';
 
 export function LoadingPage() {
   return (

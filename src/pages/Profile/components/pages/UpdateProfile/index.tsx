@@ -1,7 +1,7 @@
-import { Header } from '../../../../../components/Header';
-import { Navbar } from '../../../../../components/Navbar';
-import { useUserStore } from '../../../../../store/user.ts';
-import { CustomInput } from '../../CustomInput';
+import { Header } from '@/components/Header';
+import { Navbar } from '@/components/Navbar';
+import { useUserStore } from '@/store/user.ts';
+import { CustomInput } from '@/pages/Profile/components/CustomInput';
 import { FormEvent, useRef } from 'react';
 
 export function UpdateProfile() {
@@ -39,7 +39,7 @@ export function UpdateProfile() {
         </form>
 
         <button className="w-80 h-16 px-12 py-3 rounded-3xl text-white font-semibold
-        bg-orange-600 mt-8 hover:bg-orange-500" onClick={handleSubmit}>
+        bg-orange-600 mt-8 hover:bg-orange-500" onClick={handleSubmit} data-testid="update-button">
           Update Profile
         </button>
       </div>

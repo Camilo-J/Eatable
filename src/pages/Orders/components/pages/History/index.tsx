@@ -1,10 +1,10 @@
-import { Header } from '../../../../../components/Header';
-import { useOrderStore } from '../../../../../store/order.ts';
+import { Header } from '@/components/Header';
+import { useOrderStore } from '@/store/order.ts';
 import { useEffect } from 'react';
 import { OrderRegisterCard } from '../../OrderRegisterCard';
-import { NotFound } from '../../../../../components/NotFound';
+import { NotFound } from '@/components/NotFound';
 import { IconCalendar } from '@tabler/icons-react';
-import { Navbar } from '../../../../../components/Navbar';
+import { Navbar } from '@/components/Navbar';
 
 export function History() {
   const orderStored = useOrderStore(state => state.ordersStored);

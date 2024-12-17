@@ -1,7 +1,7 @@
-import { Product } from '../types/product.ts';
-import { getProducts } from '../services/productsService.ts';
+import { Product } from '@/types/product.ts';
+import { getProducts } from '@/services/productsService.ts';
 import { create } from 'zustand';
-import { getFilters } from '../pages/Products/utils/getFilters.ts';
+import { getFilters } from '@/pages/Products/utils/getFilters.ts';
 
 interface ProductState {
   products: Product[];

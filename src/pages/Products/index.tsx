@@ -1,7 +1,7 @@
 import { Search } from './components/Search';
 import { FilterContainer } from './components/FilterContainer';
 import { ProductContainer } from './components/ProductContainer';
-import { Navbar } from '../../components/Navbar';
+import { Navbar } from '@/components/Navbar';
 
 
 export function Products() {

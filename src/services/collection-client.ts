@@ -1,4 +1,4 @@
-import { BASE_URI, tokenKey } from '../constants/setting.ts';
+import { BASE_URI, tokenKey } from '@/constants/setting.ts';
 import { tryit } from 'radashi';
 
 interface CollectionClientOptions {
@@ -32,7 +32,6 @@ export default async function collectionClient<T>(
     headers,
     body: body ? JSON.stringify(body) : null
   };
-
 
   const response = await fetch(`${BASE_URI}${endpoint}`, config);
 

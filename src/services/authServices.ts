@@ -1,8 +1,8 @@
 import collectionClient from './collection-client';
-import { User } from '../types/user';
+import { User } from '@/types/user';
 import { omit } from 'radashi';
-import { tokenKey } from '../constants/setting';
-import { Credentials } from '../types/auth';
+import { tokenKey } from '@/constants/setting';
+import { Credentials } from '@/types/auth';
 
 export async function login(credentials: Credentials) {
   const response = await collectionClient<User>('/login', {

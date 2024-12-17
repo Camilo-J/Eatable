@@ -8,7 +8,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 .env
-
+coverage
 node_modules
 dist
 dist-ssr
@@ -24,3 +24,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

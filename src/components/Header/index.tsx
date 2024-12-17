@@ -10,8 +10,9 @@ export function Header({ text }: Props) {
 
   return (
     <section className="flex items-center">
-      <IconChevronLeft cursor="pointer" color="gray" size={23} onClick={() => navigate(-1)} />
-      {text && <p className="w-full text-center text-lg font-semibold text-gray-700">{text}</p>}
+      <IconChevronLeft data-testid="back-icon" cursor="pointer" color="gray" size={23} onClick={() => navigate(-1)} />
+      {text &&
+        <p data-testid="text-header" className="w-full text-center text-lg font-semibold text-gray-700">{text}</p>}
     </section>
   );
 }
