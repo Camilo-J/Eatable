@@ -31,7 +31,9 @@ export function Checkout() {
 
         <div className="flex bg-gray-100 rounded-lg mt-4 justify-between">
           <p>Address details</p>
-          <button className="text-orange-600 cursor-pointer" onClick={() => navigate('/profile')}>Change</button>
+          <button data-testid="change-button" className="text-orange-600 cursor-pointer"
+                  onClick={() => navigate('/profile/edit')}>Change
+          </button>
         </div>
 
         <div className="bg-white w-80 h-48 p-4 rounded-3xl flex flex-col gap-1 text-sm">
@@ -54,8 +56,7 @@ export function Checkout() {
             role="status" />
           <button className={`w-80 h-16 px-12 py-3 rounded-3xl text-white font-semibold bg-orange-600 mt-8 
               ${total === 0 || isPending ? 'bg-orange-400' : 'hover:bg-orange-500'}`}
-                  onClick={handleCompleteOrder}
-                  disabled={total === 0 || isPending}>
+                  onClick={handleCompleteOrder} disabled={total === 0 || isPending} data-testid="complete-button">
             Complete Order
           </button>
         </div>

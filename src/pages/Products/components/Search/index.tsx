@@ -18,7 +18,6 @@ export function Search() {
     searchProducts('');
   };
 
-
   return (
     <div className="flex justify-between items-center text-md text-gray-500" data-testid="search-component">
       <div className="flex items-center gap-4">
@@ -30,7 +29,8 @@ export function Search() {
                onChange={handleSearch} />
       </div>
 
-      <IconShoppingCart color="#ea580c" size={27} cursor="pointer" onClick={() => navigate('/orders')} />
+      <IconShoppingCart data-testid="cart-icon" color="#ea580c" size={27} cursor="pointer"
+                        onClick={() => navigate('/orders')} />
     </div>
   );
 }

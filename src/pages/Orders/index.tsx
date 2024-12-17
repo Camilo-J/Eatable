@@ -19,6 +19,7 @@ export function Orders() {
           className="w-80 h-16 px-12 mx-12 py-3 rounded-3xl text-white
          font-semibold bg-orange-600 mt-8 hover:bg-orange-500"
           onClick={() => navigate('/orders/checkout')}
+          data-testid="checkout-button"
         >
           Checkout
         </button>

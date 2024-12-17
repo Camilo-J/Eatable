@@ -41,7 +41,7 @@ export function OrderCard({ product, productId, quantity }: Props) {
       <div
         className="flex justify-center items-center gap-1 self-end h-6 w-20 px-1.5 rounded-3xl bg-orange-600 text-white">
         <IconMinus data-testid="decrease-icon" size={20} cursor="pointer" onClick={handleDecrement} />
-        <p className="text-base">{quantity}</p>
+        <p className="text-base" data-testid="amount-product">{quantity}</p>
         <IconPlus data-testid="increase-icon" size={20} cursor="pointer" onClick={handleIncrement} />
       </div>
     </div>

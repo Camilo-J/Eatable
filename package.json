@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "unit:run": "vitest",
-    "unit:coverage": "vitest run --coverage"
+    "unit:coverage": "vitest run --coverage",
+    "e2e:ui": "playwright test --ui",
+    "e2e:run": "playwright test && playwright show-report"
   },
   "dependencies": {
     "@formkit/tempo": "^0.1.2",
@@ -23,9 +25,11 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.16.0",
+    "@playwright/test": "^1.49.1",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@testing-library/user-event": "^14.5.2",
+    "@types/node": "^22.10.2",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react-swc": "^3.7.2",
